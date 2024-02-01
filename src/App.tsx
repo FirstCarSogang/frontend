@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
-import { ReactComponent as Arrow } from './assets/arrowLeft.svg';
-import { Button } from '@chakra-ui/react';
-import { css } from '@emotion/react';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './layout/layout';
+import Home1 from './pages/home/Home1';
 
 const App = () => (
-  <Fragment>
-    <Arrow />
-    <Button>버튼</Button>
-    <h1>첫차 서강</h1>
-  </Fragment>
+  <Layout>
+    <Routes>
+      <Route path="/" element={<Home1 />} />
+    </Routes>
+  </Layout>
 );
 
 export default App;
