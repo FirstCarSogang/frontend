@@ -16,6 +16,21 @@ const theme = extendTheme({
       },
     },
   },
+  layerStyles: {
+    homeWrapper: {
+      w: '100%',
+      h: '100%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      pos: 'relative',
+      backgroundImage: `url('/img/FirstCar.png')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      p: '10px',
+      gap: '20px',
+    },
+  },
 });
 
 const root = CreateDOM.createRoot(
