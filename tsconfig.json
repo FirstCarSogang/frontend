@@ -13,10 +13,11 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    // "jsxImportSource": "@emotion/react",
+  },
 }
