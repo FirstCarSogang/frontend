@@ -38,6 +38,7 @@ export default function LoginForm() {
     // } catch (err) {
     //   toggleErrorModal.toggle();
     // }
+    navigate('/train');
     toggleLoginModal.toggle();
     // const loginUser = loginUser.filter(
     //   (user) => user.studentId === data.studentId && user.password === data.password,
@@ -57,6 +58,7 @@ export default function LoginForm() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        overflowY: 'scroll',
       }}
     >
       <LoginModal isOpen={isLoginModalOpen} toggle={toggleLoginModal.toggle} />

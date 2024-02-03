@@ -1,7 +1,8 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
 import HomeNav from '../../components/HomeNav';
 import LoginForm from './LoginForm';
+import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
 
 export default function Login() {
   return (
@@ -14,7 +15,18 @@ export default function Login() {
       w="100%"
       h="100%"
     >
-      <HomeNav />
+      <HomeNav
+        title="첫차 서강"
+        button={
+          <Button
+            colorScheme="green"
+            size="md"
+            rightIcon={<TrainSvg color="white" />}
+          >
+            시작하기
+          </Button>
+        }
+      />
       <LoginForm />
     </Flex>
   );

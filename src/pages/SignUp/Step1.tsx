@@ -63,7 +63,7 @@ export default function Step1({ onNext }: Step1Props) {
   return (
     <Flex
       w="100%"
-      h="100vh"
+      h="100%"
       flexDir="column"
       justify="center"
       align="center"

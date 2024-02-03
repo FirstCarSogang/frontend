@@ -25,7 +25,16 @@ export default function SignUp() {
 
   return (
     <FormProvider {...method}>
-      <form onSubmit={method.handleSubmit(submitHandler)}>
+      <form
+        onSubmit={method.handleSubmit(submitHandler)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+        }}
+      >
         {step === 1 ? (
           <Step1 onNext={() => setStep((prev) => prev + 1)} />
         ) : (

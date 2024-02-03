@@ -10,7 +10,7 @@
     "isolatedModules": true,
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],

@@ -14,11 +14,23 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HomeNav from '../../components/HomeNav';
+import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
 
 export default function Home2() {
   return (
     <Flex layerStyle="homeWrapper" overflowY="scroll">
-      <HomeNav />
+      <HomeNav
+        title="첫차 서강"
+        button={
+          <Button
+            colorScheme="green"
+            size="md"
+            rightIcon={<TrainSvg color="white" />}
+          >
+            시작하기
+          </Button>
+        }
+      />
       <Card p={5} w="100%">
         <Text fontSize="18px" as="b" pb={2.5} pl="16px">
           서강 첫차 이용방법
