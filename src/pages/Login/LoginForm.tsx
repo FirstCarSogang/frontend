@@ -19,23 +19,31 @@ import { ReactComponent as PwHideSvg } from '../../assets/svg/pwHide.svg';
 import { LoginUser } from '../../types/common';
 import axios from 'axios';
 import LoginModal from './LoginModal';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    getValues,
   } = useForm<LoginUser>();
   const [isShow, toggle] = useBoolean(false);
-  const [isModalOpen, toggleModal] = useBoolean(false);
+  const [isLoginModalOpen, toggleLoginModal] = useBoolean(false);
+  const [isErrorModalOpen, toggleErrorModal] = useBoolean(false);
+  const navigate = useNavigate();
   const submitHandler: SubmitHandler<LoginUser> = async (data) => {
-    // const loginUser = await axios.get('http://localhost:3000/login')
-    toggleModal.toggle();
+    // try {
+    //   const loginUser = await axios.get('http://localhost:3000/login');
+    // } catch (err) {
+    //   toggleErrorModal.toggle();
+    // }
+    toggleLoginModal.toggle();
     // const loginUser = loginUser.filter(
     //   (user) => user.studentId === data.studentId && user.password === data.password,
     // )
     // if (loginUser.length === 0) {
-    //   toggle()
+    //   toggleLoginModal.toggle()
     // } else {
     //   navigate('/home')
     // }
@@ -51,7 +59,7 @@ export default function LoginForm() {
         alignItems: 'center',
       }}
     >
-      <LoginModal isOpen={isModalOpen} toggle={toggleModal.toggle}/>
+      <LoginModal isOpen={isLoginModalOpen} toggle={toggleLoginModal.toggle} />
       <Flex grow={1} w="100%" flexDir="column" align="center" gap="20px">
         <Text fontSize="40px" as="b">
           첫차 서강
@@ -115,6 +123,7 @@ export default function LoginForm() {
           colorScheme="green"
           size="md"
           isLoading={isSubmitting}
+          w="100%"
         >
           로그인
         </Button>
@@ -124,7 +133,14 @@ export default function LoginForm() {
             또는
           </AbsoluteCenter>
         </Box>
-        <Button colorScheme="gray" size="md">
+        <Button
+          colorScheme="gray"
+          size="md"
+          w="100%"
+          onClick={() => {
+            navigate('/signup');
+          }}
+        >
           회원가입
         </Button>
       </Flex>
