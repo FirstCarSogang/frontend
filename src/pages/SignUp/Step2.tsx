@@ -9,10 +9,15 @@ import {
 } from '@chakra-ui/react';
 import { ReactComponent as PlusSvg } from '../../assets/svg/plus.svg';
 import React, { useEffect, useState } from 'react';
-import TrainCard from './TrainCard';
+import TrainCard from './SelectTrainCard';
 import { useFormContext } from 'react-hook-form';
 
-export default function Step2() {
+interface Step2Props {
+  selectedTrain: string;
+  setSelectedTrain: React.Dispatch<React.SetStateAction<'normal' | 'fast'>>;
+}
+
+export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
   const {
     register,
     getValues,
@@ -20,9 +25,7 @@ export default function Step2() {
     watch,
     formState: { errors },
   } = useFormContext();
-  const [selectedTrain, setSelectedTrain] = React.useState<'normal' | 'fast'>(
-    'normal',
-  );
+
   const [img1Preview, setImg1Preview] = useState<string | null>(null);
   const [img2Preview, setImg2Preview] = useState<string | null>(null);
   const [img3Preview, setImg3Preview] = useState<string | null>(null);
@@ -58,6 +61,7 @@ export default function Step2() {
       justify="center"
       align="center"
       gap="20px"
+      overflowY="scroll"
     >
       <Text fontSize="24px" as="b" color="gray.800" textAlign="center">
         자신을 잘 표현하는 사진

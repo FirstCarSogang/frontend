@@ -20,8 +20,11 @@ export default function SignUp() {
   const method = useForm<SignUpForm>({ mode: 'onBlur' });
 
   const submitHandler: SubmitHandler<SignUpForm> = async (data) => {
-    console.log(data);
+    console.log(data, selectedTrain);
   };
+  const [selectedTrain, setSelectedTrain] = React.useState<'normal' | 'fast'>(
+    'normal',
+  );
 
   return (
     <FormProvider {...method}>
@@ -38,7 +41,10 @@ export default function SignUp() {
         {step === 1 ? (
           <Step1 onNext={() => setStep((prev) => prev + 1)} />
         ) : (
-          <Step2 />
+          <Step2
+            selectedTrain={selectedTrain}
+            setSelectedTrain={setSelectedTrain}
+          />
         )}
       </form>
     </FormProvider>

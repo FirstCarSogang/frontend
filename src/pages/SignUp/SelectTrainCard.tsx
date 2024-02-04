@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardBody, Text, theme } from '@chakra-ui/react';
 
-interface TrainCardProps {
+interface SelectTrainCardProps {
   title: string;
   body1: string;
   body2: string;
@@ -9,17 +9,18 @@ interface TrainCardProps {
   selected: boolean;
 }
 
-export default function TrainCard({
+export default function SelectTrainCard({
   title,
   body1,
   body2,
   footer,
   selected = false,
-}: TrainCardProps) {
+}: SelectTrainCardProps) {
   return (
     <Card
       h="245px"
       border={selected ? `1px solid ${theme.colors.green[300]}` : ''}
+      cursor="pointer"
     >
       <CardBody
         display="flex"

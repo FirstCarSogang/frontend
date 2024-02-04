@@ -75,7 +75,13 @@ export default function TrainCard({ number, onClick }: TrainCardProps) {
         </Stepper>
         <Divider />
       </Box>
-      <Center w="93px" h="93px" bg="red.500" flexShrink={0}>
+      <Center
+        w="93px"
+        h="93px"
+        bg="red.500"
+        flexShrink={0}
+        scrollSnapAlign="end"
+      >
         <Text fontSize="14px" color="white">
           나가기
         </Text>
