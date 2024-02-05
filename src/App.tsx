@@ -5,6 +5,7 @@ import Home1 from './pages/home/Home1';
 import Home2 from './pages/home/Home2';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
+import TicketNumber from './pages/Train/TicketNumber/TicketNumber';
 import Train from './pages/Train/Train';
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/train" element={<Train />} />
+      <Route path="train/:ticketnumber" element={<TicketNumber />} />
     </Routes>
   </Layout>
 );

@@ -1,9 +1,8 @@
-import { Box, Flex, Tab, TabList, Tabs } from '@chakra-ui/react';
-import HomeNav from '../../components/HomeNav';
+import { Box, CloseButton, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
-import TicketCard from './TicketCard';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { type Ticket } from 'src/types/common';
+import DayCard from './DayCard';
 
 //10일치 질문이 담긴 티켓
 const DUMMYTICKETS: Ticket[] = [
@@ -281,30 +280,85 @@ const DUMMYTICKETS: Ticket[] = [
   },
 ];
 
-export default function Normal() {
+export default function TicketNumber() {
+  const ticketNumber = useParams().ticketnumber;
+  const DUMMYTICKET = DUMMYTICKETS[Number(ticketNumber) - 1];
   const navigate = useNavigate();
-  const ticketClickHandler = (ticketNumber: number) => {
-    navigate(`./${ticketNumber}`);
-  };
   return (
-    <Box pos="relative" p="80px 0" w="100%" h="100%">
-      <HomeNav title="열차" button={<></>} />
-      <Tabs variant="soft-rounded" colorScheme="green" mb="20px" p="0 20px">
-        <TabList>
-          <Tab>일반</Tab>
-          <Tab>급행</Tab>
-        </TabList>
-      </Tabs>
-      {DUMMYTICKETS.map((ticket) => (
-        <TicketCard
-          progressingDay={ticket.progressingDay}
+    <Flex
+      w="100%"
+      h="100%"
+      flexDir="column"
+      gap="10px"
+      align="center"
+      pos="relative"
+      pt="100px"
+      pr="10px"
+      pl="10px"
+      overflowY="scroll"
+    >
+      <Flex
+        pos="absolute"
+        top={0}
+        left={0}
+        w="100%"
+        h="60px"
+        p="0 20px"
+        gap="10px"
+        align="center"
+      >
+        <CloseButton
           onClick={() => {
-            ticketClickHandler(ticket.ticketNumber);
+            navigate('/train');
           }}
-          key={ticket.ticketNumber}
-          ticketNumber={ticket.ticketNumber}
         />
-      ))}
-    </Box>
+        <Text fontSize="16px" as="b">
+          {ticketNumber}번째 티켓
+        </Text>
+      </Flex>
+      {DUMMYTICKET.progressingDay < 4
+        ? //progressingDay가 3일차 이하일 때 -> DayCard 3장만 렌더링
+          DUMMYTICKET.DayQuestion.map((question, index) => {
+            // progressingDay 포함 이전 -> disabled=== false
+            // progressingDay 미포함 이후 -> disabled=== true
+            if (index + 1 <= 3) {
+              if (index + 1 <= DUMMYTICKET.progressingDay) {
+                return (
+                  <DayCard
+                    question={question}
+                    day={index + 1}
+                    isDisabled={false}
+                    key={index}
+                    progressingDay={DUMMYTICKET.progressingDay}
+                  />
+                );
+              } else {
+                return (
+                  <DayCard
+                    question={question}
+                    day={index + 1}
+                    isDisabled={true}
+                    key={index}
+                    progressingDay={DUMMYTICKET.progressingDay}
+                  />
+                );
+              }
+            } else return;
+          })
+        : //progressingDay가 4일차 이상일 때 -> 날짜 갯수에 맞춰 렌더링
+          DUMMYTICKET.DayQuestion.map((question, index) => {
+            if (index + 1 <= DUMMYTICKET.progressingDay) {
+              return (
+                <DayCard
+                  question={question}
+                  day={index + 1}
+                  isDisabled={false}
+                  key={index}
+                  progressingDay={DUMMYTICKET.progressingDay}
+                />
+              );
+            } else return;
+          })}
+    </Flex>
   );
 }

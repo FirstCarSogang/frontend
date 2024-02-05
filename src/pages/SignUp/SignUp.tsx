@@ -10,9 +10,9 @@ interface SignUpForm {
   studentId: string;
   kakaotalkID: string;
   email: string;
-  photo1: string;
-  photo2: string;
-  photo3: string;
+  photo1: FileList;
+  photo2: FileList;
+  photo3: FileList;
 }
 
 export default function SignUp() {

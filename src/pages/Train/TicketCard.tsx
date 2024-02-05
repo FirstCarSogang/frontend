@@ -15,8 +15,9 @@ import {
 import React from 'react';
 
 interface TrainCardProps {
-  number: number;
+  progressingDay: number;
   onClick?: () => void;
+  ticketNumber: number;
 }
 
 interface Step {
@@ -30,8 +31,12 @@ const steps: Step[] = [
   { title: 'Day 3', description: '질문' },
 ];
 
-export default function TrainCard({ number, onClick }: TrainCardProps) {
-  const { activeStep } = useSteps({ index: 1, count: 3 });
+export default function TicketCard({
+  progressingDay,
+  onClick,
+  ticketNumber,
+}: TrainCardProps) {
+  const { activeStep } = useSteps({ index: progressingDay - 1, count: 3 });
   return (
     <Box
       display="flex"
@@ -57,7 +62,7 @@ export default function TrainCard({ number, onClick }: TrainCardProps) {
         scrollSnapAlign="start"
       >
         <Text fontSize="18px" as="b" p="0 20px">
-          {number}번째 티켓
+          {ticketNumber}번째 티켓
         </Text>
         <Stepper index={activeStep} colorScheme="green" p="0 20px">
           {steps.map((step, index) => (

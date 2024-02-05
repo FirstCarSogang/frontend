@@ -1,7 +1,7 @@
 {
   "name": "firstcarsogang",
   "version": "1.0.0",
-  "description": "",
+  "description": "for sogang univ",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --open --hot",
@@ -9,7 +9,7 @@
     "start": "webpack --config webpack.dev.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "eunsu",
   "license": "ISC",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
