@@ -291,7 +291,7 @@ export default function Normal() {
       <HomeNav title="열차" button={<></>} />
       <Tabs variant="soft-rounded" colorScheme="green" mb="20px" p="0 20px">
         <TabList>
-          <Tab>일반</Tab>
+          <Tab mr="5px">일반</Tab>
           <Tab>급행</Tab>
         </TabList>
       </Tabs>

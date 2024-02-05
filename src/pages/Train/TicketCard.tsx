@@ -36,7 +36,7 @@ export default function TicketCard({
   onClick,
   ticketNumber,
 }: TrainCardProps) {
-  const { activeStep } = useSteps({ index: progressingDay - 1, count: 3 });
+  const { activeStep } = useSteps({ index: progressingDay - 1, count: 10 });
   return (
     <Box
       display="flex"

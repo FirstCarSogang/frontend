@@ -12,6 +12,7 @@ import { ReactComponent as MinusSvg } from '../../../assets/svg/minus.svg';
 import { type Question } from 'src/types/common';
 import React, { useState } from 'react';
 import Day1QuestionCard from './Day1QuestionCard';
+import AfterDay1QuestionCard from './AfterDay1QuestionCard';
 
 interface DayCardProps {
   question: Question;
@@ -61,7 +62,7 @@ export default function DayCard({
       </CardBody>
       <Collapse in={isOpen} animateOpacity>
         {day === 1 && <Day1QuestionCard question={question} />}
-        {day !== 1 && <Text fontSize="14px">2이상</Text>}
+        {day !== 1 && <AfterDay1QuestionCard question={question} />}
       </Collapse>
     </Card>
   );

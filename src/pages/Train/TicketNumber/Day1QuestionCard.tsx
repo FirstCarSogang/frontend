@@ -19,7 +19,7 @@ export default function Day1QuestionCard({ question }: Day1QuestionCardProps) {
         bg="gray.200"
         focusBorderColor="green.200"
       />
-      <Button colorScheme="green" size="sm">
+      <Button colorScheme="green" size="sm" mb="10px">
         제출
       </Button>
     </CardFooter>
