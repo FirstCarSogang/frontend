@@ -6,7 +6,7 @@ interface Day1QuestionCardProps {
   question: Question;
 }
 
-export default function Day1QuestionCard({ question }: Day1QuestionCardProps) {
+export default function NonAnsweredDay1QCard({ question }: Day1QuestionCardProps) {
   const day1Question = question as Day1Question;
   return (
     <CardFooter p="10px 30px" flex="display" flexDir="column" gap="10px">

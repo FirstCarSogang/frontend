@@ -11,11 +11,12 @@ import { ReactComponent as PlusSvg } from '../../../assets/svg/plus.svg';
 import { ReactComponent as MinusSvg } from '../../../assets/svg/minus.svg';
 import { type Question } from 'src/types/common';
 import React, { useState } from 'react';
-import Day1QuestionCard from './Day1QuestionCard';
-import AfterDay1QuestionCard from './AfterDay1QuestionCard';
+import Day1QuestionCard from './NonAnswered/NonAnsweredDay1QCard';
+import AfterDay1QuestionCard from './NonAnswered/NonAnsweredAfterDay1QCard';
 
 interface DayCardProps {
   question: Question;
+  opponentQuestion?: Question;
   day: number;
   isDisabled: boolean;
   progressingDay: number;
@@ -26,6 +27,7 @@ export default function DayCard({
   day,
   isDisabled,
   progressingDay,
+  opponentQuestion,
 }: DayCardProps) {
   const { isOpen, onToggle } = useDisclosure();
   const [isClicked, setIsClicked] = useState(false);

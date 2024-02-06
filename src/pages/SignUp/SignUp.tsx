@@ -22,8 +22,8 @@ export default function SignUp() {
   const submitHandler: SubmitHandler<SignUpForm> = async (data) => {
     console.log(data, selectedTrain);
   };
-  const [selectedTrain, setSelectedTrain] = React.useState<'normal' | 'fast'>(
-    'normal',
+  const [selectedTrain, setSelectedTrain] = React.useState<'slow' | 'fast'>(
+    'slow',
   );
 
   return (

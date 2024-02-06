@@ -14,7 +14,7 @@ import { useFormContext } from 'react-hook-form';
 
 interface Step2Props {
   selectedTrain: string;
-  setSelectedTrain: React.Dispatch<React.SetStateAction<'normal' | 'fast'>>;
+  setSelectedTrain: React.Dispatch<React.SetStateAction<'slow' | 'fast'>>;
 }
 
 export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
@@ -197,7 +197,7 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
         <Box
           w="100%"
           onClick={() => {
-            setSelectedTrain('normal');
+            setSelectedTrain('slow');
           }}
         >
           <TrainCard
