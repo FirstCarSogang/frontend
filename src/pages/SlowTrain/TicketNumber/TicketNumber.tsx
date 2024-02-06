@@ -13,9 +13,9 @@ const DUMMYopponentsQuestion: Question[] = [
     comment: [
       {
         id: 1,
-        content: '답변이 재미 없어요',
+        content: 'ㅋㅋㅋㅋㅋㅋㅋ 얼탱이 없으시네요',
         createdAt: '2023-02-01',
-        from: '최환',
+        from: '송은수',
       },
     ],
     isAnswered: true,
@@ -23,31 +23,101 @@ const DUMMYopponentsQuestion: Question[] = [
   {
     question1: '어제 먹은 점심은?',
     placeholder1: '어제 먹은 점심을 적어주세요',
-    answer1: '어제는 점심을 먹지 않았어요. 일이 있어서 바빴거든요.',
-    comment1: [
-      {
-        id: 1,
-        content: '햄버거 맛있겠다',
-        createdAt: '2023-02-01',
-        from: '최환',
-      },
-    ],
     question2: '어제 먹은 점심은?',
     multipleChoiceAnswer1: '햄버거',
     multipleChoiceAnswer2: '치킨',
     multipleChoiceAnswer3: '피자',
     multipleChoiceAnswer4: '짜장면',
     multipleChoiceAnswer5: '짬뽕',
-    answer2: 3,
-    comment2: [
-      {
-        id: 1,
-        content: '햄버거 맛있겠다',
-        createdAt: '2023-02-01',
-        from: '최환',
-      },
-    ],
-    isAnswered: true,
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
+  },
+  {
+    question1: '어제 먹은 점심은?',
+    placeholder1: '어제 먹은 점심을 적어주세요',
+    question2: '어제 먹은 점심은?',
+    multipleChoiceAnswer1: '햄버거',
+    multipleChoiceAnswer2: '치킨',
+    multipleChoiceAnswer3: '피자',
+    multipleChoiceAnswer4: '짜장면',
+    multipleChoiceAnswer5: '짬뽕',
+    isAnswered: false,
   },
 ];
 
@@ -72,7 +142,7 @@ const DUMMYTICKETS: Ticket[] = [
             id: 2,
             content: '어쩔티비',
             createdAt: '2023-02-01',
-            from: '최환',
+            from: '송은수',
           },
         ],
         isAnswered: true,
@@ -199,7 +269,7 @@ const DUMMYTICKETS: Ticket[] = [
             id: 2,
             content: '어쩔티비',
             createdAt: '2023-02-01',
-            from: '최환',
+            from: '은수',
           },
         ],
         isAnswered: true,
@@ -356,7 +426,7 @@ export default function TicketNumber() {
       >
         <CloseButton
           onClick={() => {
-            navigate('/train');
+            navigate('/slowtrain');
           }}
         />
         <Text fontSize="16px" as="b">
@@ -402,6 +472,7 @@ export default function TicketNumber() {
                 return (
                   <DayCard
                     question={question}
+                    opponentQuestion={DUMMYopponentsQuestion[index]}
                     day={index + 1}
                     isDisabled={true}
                     key={index}

@@ -38,7 +38,7 @@ export default function LoginForm() {
     // } catch (err) {
     //   toggleErrorModal.toggle();
     // }
-    navigate('/train');
+    navigate('/slowtrain');
     toggleLoginModal.toggle();
     // const loginUser = loginUser.filter(
     //   (user) => user.studentId === data.studentId && user.password === data.password,

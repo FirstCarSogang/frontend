@@ -11,12 +11,14 @@ import { ReactComponent as PlusSvg } from '../../../assets/svg/plus.svg';
 import { ReactComponent as MinusSvg } from '../../../assets/svg/minus.svg';
 import { type Question } from 'src/types/common';
 import React, { useState } from 'react';
-import Day1QuestionCard from './NonAnswered/NonAnsweredDay1QCard';
-import AfterDay1QuestionCard from './NonAnswered/NonAnsweredAfterDay1QCard';
+import NonAnsweredDay1QCard from './NonAnswered/NonAnsweredDay1QCard';
+import NonAnsweredAfterDay1QCard from './NonAnswered/NonAnsweredAfterDay1QCard';
+import AnsweredDay1QCard from './Answered/AnsweredDay1QCard';
+import AnsweredAfterDay1QCard from './Answered/AnsweredAfterDay1QCard';
 
 interface DayCardProps {
   question: Question;
-  opponentQuestion?: Question;
+  opponentQuestion: Question;
   day: number;
   isDisabled: boolean;
   progressingDay: number;
@@ -62,10 +64,22 @@ export default function DayCard({
           <PlusSvg style={{ color: `${isDisabled ? '#718096' : 'black'}` }} />
         )}
       </CardBody>
-      <Collapse in={isOpen} animateOpacity>
-        {day === 1 && <Day1QuestionCard question={question} />}
-        {day !== 1 && <AfterDay1QuestionCard question={question} />}
-      </Collapse>
+      {opponentQuestion.isAnswered && question.isAnswered ? (
+        <Collapse in={isOpen}>
+          {day === 1 && (
+            <AnsweredDay1QCard
+              question={question}
+              opponentQuestion={opponentQuestion}
+            />
+          )}
+          {day !== 1 && <Text>안녕</Text>}
+        </Collapse>
+      ) : (
+        <Collapse in={isOpen} animateOpacity>
+          {day === 1 && <NonAnsweredDay1QCard question={question} />}
+          {day !== 1 && <NonAnsweredAfterDay1QCard question={question} />}
+        </Collapse>
+      )}
     </Card>
   );
 }
