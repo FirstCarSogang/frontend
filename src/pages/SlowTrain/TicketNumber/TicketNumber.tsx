@@ -9,13 +9,19 @@ const DUMMYopponentsQuestion: Question[] = [
   {
     question: '자기소개',
     placeholder: '자기소개를 해주세요',
-    answer: '저는 R관남은 아닌데.. 아무튼 그래요',
+    answer: '저는 R관남은 아닌데.. 아무튼 상대방이에요',
     comment: [
       {
         id: 1,
         content: 'ㅋㅋㅋㅋㅋㅋㅋ 얼탱이 없으시네요',
         createdAt: '2023-02-01',
         from: '송은수',
+      },
+      {
+        id: 2,
+        content: '? 반말 ㄴㄴ',
+        createdAt: '2023-02-01',
+        from: '최환',
       },
     ],
     isAnswered: true,
@@ -134,13 +140,13 @@ const DUMMYTICKETS: Ticket[] = [
         comment: [
           {
             id: 1,
-            content: '답변이 재미 없어요',
+            content: '1번티켓이에요. 답변이 재미 없어요',
             createdAt: '2023-02-01',
             from: '최환',
           },
           {
             id: 2,
-            content: '어쩔티비',
+            content: '1번 티켓이에요. 어쩔티비',
             createdAt: '2023-02-01',
             from: '송은수',
           },
@@ -269,7 +275,7 @@ const DUMMYTICKETS: Ticket[] = [
             id: 2,
             content: '어쩔티비',
             createdAt: '2023-02-01',
-            from: '은수',
+            from: '송은수',
           },
         ],
         isAnswered: true,
