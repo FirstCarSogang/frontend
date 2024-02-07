@@ -46,7 +46,7 @@ export interface AfterDay1Question {
   multipleChoiceAnswer3?: string;
   multipleChoiceAnswer4?: string;
   multipleChoiceAnswer5?: string;
-  answer2?: number;
+  answer2?: string;
   comment2?: Comment[];
   isAnswered: boolean;
 }

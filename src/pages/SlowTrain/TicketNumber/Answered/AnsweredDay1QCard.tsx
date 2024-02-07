@@ -31,6 +31,8 @@ export default function AnsweredDay1QCard({
 }: AnsweredDay1QCardProps) {
   const day1Question = question as Day1Question;
   const opponentDay1Question = opponentQuestion as Day1Question;
+  const [showingQuestion, setShowingQuestion] =
+    useState<Day1Question>(opponentDay1Question);
   const [isMyAnswer, setMyAnswer] = useState(false);
   const { isOpen, onToggle } = useDisclosure();
   return (
@@ -54,7 +56,7 @@ export default function AnsweredDay1QCard({
         </TabList>
       </Tabs>
       <Text fontSize="16px" as="b">
-        {isMyAnswer ? day1Question.question : opponentDay1Question.question}
+        {showingQuestion.question}
       </Text>
       <Box
         mb="10px"
@@ -64,7 +66,7 @@ export default function AnsweredDay1QCard({
         borderRadius="6px"
       >
         <Text fontSize="16px" color="gray.800">
-          {isMyAnswer ? day1Question.answer : opponentDay1Question.answer}
+          {showingQuestion.answer}
         </Text>
       </Box>
       <Box
@@ -76,28 +78,18 @@ export default function AnsweredDay1QCard({
         }}
       >
         <Text fontSize="14px" as="b">
-          {isMyAnswer
-            ? day1Question.comment?.length || 0
-            : opponentDay1Question.comment?.length || 0}
+          {showingQuestion.comment?.length || 0}
         </Text>
         <CommentSvg />
       </Box>
       <Collapse in={isOpen}>
-        {isMyAnswer
-          ? day1Question.comment?.map((comment, idx) => (
-              <Comment
-                content={comment.content}
-                isMe={comment.from === DUMMYLOGINUSER}
-                key={idx}
-              />
-            ))
-          : opponentDay1Question.comment?.map((comment, idx) => (
-              <Comment
-                content={comment.content}
-                isMe={comment.from === DUMMYLOGINUSER}
-                key={idx}
-              />
-            ))}
+        {showingQuestion.comment?.map((comment, idx) => (
+          <Comment
+            content={comment.content}
+            isMe={comment.from === DUMMYLOGINUSER}
+            key={idx}
+          />
+        ))}
 
         <InputGroup size="sm" w="100%">
           <Input

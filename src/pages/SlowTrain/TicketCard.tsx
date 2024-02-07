@@ -52,6 +52,7 @@ export default function TicketCard({
       onClick={onClick}
       cursor="pointer"
       _hover={{ bg: 'gray.50' }}
+      pt="5px"
     >
       <Box
         display="flex"

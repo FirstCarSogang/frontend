@@ -18,15 +18,15 @@ const DUMMYTICKETS: Ticket[] = [
         comment: [
           {
             id: 1,
-            content: '답변이 재미 없어요',
+            content: '1번티켓이에요. 답변이 재미 없어요',
             createdAt: '2023-02-01',
             from: '최환',
           },
           {
             id: 2,
-            content: '어쩔티비',
+            content: '1번 티켓이에요. 어쩔티비',
             createdAt: '2023-02-01',
-            from: '최환',
+            from: '송은수',
           },
         ],
         isAnswered: true,
@@ -153,7 +153,7 @@ const DUMMYTICKETS: Ticket[] = [
             id: 2,
             content: '어쩔티비',
             createdAt: '2023-02-01',
-            from: '최환',
+            from: '송은수',
           },
         ],
         isAnswered: true,
@@ -176,7 +176,7 @@ const DUMMYTICKETS: Ticket[] = [
         multipleChoiceAnswer3: '피자',
         multipleChoiceAnswer4: '짜장면',
         multipleChoiceAnswer5: '짬뽕',
-        answer2: 1,
+        answer2: "햄버거",
         comment2: [
           {
             id: 1,
@@ -279,6 +279,134 @@ const DUMMYTICKETS: Ticket[] = [
     withWhom: '최환',
     id: 2,
   },
+  {
+    ticketNumber: 3,
+    progressingDay: 3,
+    DayQuestion: [
+      {
+        question: '자기소개',
+        placeholder: '자기소개를 해주세요',
+        answer: '안녕하세요 저는 누굴까요?',
+        comment: [
+          {
+            id: 1,
+            content: '답변이 재미 없어요',
+            createdAt: '2023-02-01',
+            from: '최환',
+          },
+          {
+            id: 2,
+            content: '어쩔티비',
+            createdAt: '2023-02-01',
+            from: '송은수',
+          },
+        ],
+        isAnswered: true,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '우리나라 아시안컵 어땠어?',
+        placeholder1: '답변내용을 적어주세요',
+        answer1: '우리나라가 우승하는 꿈을 꿧어',
+        question2: '좋아하는 축구선수는?',
+        multipleChoiceAnswer1: '메시',
+        multipleChoiceAnswer2: '호날두',
+        multipleChoiceAnswer3: '손흥민',
+        multipleChoiceAnswer4: '이강인',
+        multipleChoiceAnswer5: '박지성',
+        isAnswered: true,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+      {
+        question1: '어제 먹은 점심은?',
+        placeholder1: '어제 먹은 점심을 적어주세요',
+        question2: '어제 먹은 점심은?',
+        multipleChoiceAnswer1: '햄버거',
+        multipleChoiceAnswer2: '치킨',
+        multipleChoiceAnswer3: '피자',
+        multipleChoiceAnswer4: '짜장면',
+        multipleChoiceAnswer5: '짬뽕',
+        isAnswered: false,
+      },
+    ],
+    withWhom: '최환',
+    id: 2,
+  },
 ];
 
 export default function SlowTrain() {
@@ -287,7 +415,7 @@ export default function SlowTrain() {
     navigate(`./${ticketNumber}`);
   };
   return (
-    <Box pos="relative" p="80px 0" w="100%" h="100%">
+    <Box pos="relative" p="80px 0" w="100%" h="100%" overflowY="scroll">
       <HomeNav title="열차" button={<></>} />
       <Tabs variant="soft-rounded" colorScheme="green" mb="20px" p="0 20px">
         <TabList>

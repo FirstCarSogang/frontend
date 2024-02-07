@@ -72,7 +72,12 @@ export default function DayCard({
               opponentQuestion={opponentQuestion}
             />
           )}
-          {day !== 1 && <Text>안녕</Text>}
+          {day !== 1 && (
+            <AnsweredAfterDay1QCard
+              question={question}
+              opponentQuestion={opponentQuestion}
+            />
+          )}
         </Collapse>
       ) : (
         <Collapse in={isOpen} animateOpacity>
