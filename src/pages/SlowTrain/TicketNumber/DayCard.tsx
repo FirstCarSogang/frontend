@@ -45,7 +45,6 @@ export default function DayCard({
       border={
         progressingDay === day ? `1px solid ${theme.colors.green[300]}` : ''
       }
-      cursor="pointer"
       w="100%"
     >
       <CardBody
@@ -53,6 +52,7 @@ export default function DayCard({
         alignItems="center"
         padding="15px 30px"
         justifyContent="space-between"
+        cursor={isDisabled ? 'not-allowed' : 'pointer'}
         onClick={clickHandler}
       >
         <Text fontSize="16px" as="b" color={isDisabled ? 'gray.500' : ''}>

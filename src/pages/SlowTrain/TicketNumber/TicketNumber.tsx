@@ -421,9 +421,9 @@ export default function TicketNumber() {
       overflowY="scroll"
     >
       <Flex
-        pos="absolute"
+        pos="fixed"
         top={0}
-        left={0}
+        maxW="540px"
         w="100%"
         h="60px"
         p="0 20px"

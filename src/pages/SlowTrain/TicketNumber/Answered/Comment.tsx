@@ -9,6 +9,7 @@ interface CommentProps {
 export default function Comment({ isMe, content }: CommentProps) {
   return (
     <Box
+      cursor="pointer"
       display="flex"
       flexDir="column"
       justifyContent="center"
