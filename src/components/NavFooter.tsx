@@ -12,6 +12,8 @@ export default function NavFooter() {
       w="100%"
       pos="fixed"
       bottom={0}
+      left="50%"
+      transform="translateX(-50%)"
       zIndex={10}
       maxW="540px"
       h="60px"
@@ -19,6 +21,7 @@ export default function NavFooter() {
       borderRadius="20px 20px 0 0"
       justify="space-around"
       align="center"
+      bg="white"
     >
       <Link to="/matching">
         <Flex
