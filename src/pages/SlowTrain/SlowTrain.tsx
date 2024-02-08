@@ -4,6 +4,7 @@ import React from 'react';
 import TicketCard from './TicketCard';
 import { useNavigate } from 'react-router-dom';
 import { type Ticket } from 'src/types/common';
+import NavFooter from '../../components/NavFooter';
 
 //10일치 질문이 담긴 티켓
 const DUMMYTICKETS: Ticket[] = [
@@ -176,7 +177,7 @@ const DUMMYTICKETS: Ticket[] = [
         multipleChoiceAnswer3: '피자',
         multipleChoiceAnswer4: '짜장면',
         multipleChoiceAnswer5: '짬뽕',
-        answer2: "햄버거",
+        answer2: '햄버거',
         comment2: [
           {
             id: 1,
@@ -433,6 +434,7 @@ export default function SlowTrain() {
           ticketNumber={ticket.ticketNumber}
         />
       ))}
+      <NavFooter />
     </Box>
   );
 }

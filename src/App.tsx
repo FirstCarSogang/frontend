@@ -7,6 +7,8 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import TicketNumber from './pages/SlowTrain/TicketNumber/TicketNumber';
 import SlowTrain from './pages/SlowTrain/SlowTrain';
+import Matching from './pages/matching/Matching';
+import Mypage from './pages/mypage/Mypage';
 
 const App = () => (
   <Layout>
@@ -17,6 +19,8 @@ const App = () => (
       <Route path="/signup" element={<SignUp />} />
       <Route path="/slowtrain" element={<SlowTrain />} />
       <Route path="slowtrain/:ticketnumber" element={<TicketNumber />} />
+      <Route path="/matching" element={<Matching />} />
+      <Route path="/mypage" element={<Mypage />} />
     </Routes>
   </Layout>
 );
