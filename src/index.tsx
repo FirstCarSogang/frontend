@@ -25,7 +25,7 @@ const theme = extendTheme({
       alignItems: 'center',
       justifyContent: 'center',
       pos: 'relative',
-      backgroundImage: `url('/img/FirstCar.png')`,
+      backgroundImage: `url('/img/Train.JPG')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       p: '10px',
