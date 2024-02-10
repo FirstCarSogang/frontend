@@ -9,6 +9,9 @@ import TicketNumber from './pages/SlowTrain/TicketNumber/TicketNumber';
 import SlowTrain from './pages/SlowTrain/SlowTrain';
 import Matching from './pages/matching/Matching';
 import Mypage from './pages/mypage/Mypage';
+import ForgetPassword1 from './pages/forgetPassword/ForgetPassword1';
+import ForgetPassword2 from './pages/forgetPassword/ForgetPassword2';
+import ForgetPassword3 from './pages/forgetPassword/ForgetPassword3';
 
 const App = () => (
   <Layout>
@@ -21,6 +24,9 @@ const App = () => (
       <Route path="slowtrain/:ticketnumber" element={<TicketNumber />} />
       <Route path="/matching" element={<Matching />} />
       <Route path="/mypage" element={<Mypage />} />
+      <Route path="/forgetpassword1" element={<ForgetPassword1 />} />
+      <Route path="/forgetpassword2" element={<ForgetPassword2 />} />
+      <Route path="/forgetpassword3" element={<ForgetPassword3 />} />
     </Routes>
   </Layout>
 );

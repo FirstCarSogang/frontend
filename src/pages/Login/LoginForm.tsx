@@ -114,9 +114,11 @@ export default function LoginForm() {
             {errors.password && errors.password?.message}
           </FormErrorMessage>
         </FormControl>
-        <Text fontSize="10px" color="gray.500" alignSelf="flex-end">
-          비밀번호를 잊으셨나요?
-        </Text>
+        <Link to="/forgetpassword1" style={{ alignSelf: 'flex-end' }}>
+          <Text fontSize="10px" color="gray.500">
+            비밀번호를 잊으셨나요?
+          </Text>
+        </Link>
       </Flex>
 
       <Flex w="100%" flexDir="column" justify="center" align="center" gap="30">

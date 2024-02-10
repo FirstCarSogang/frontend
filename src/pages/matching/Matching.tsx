@@ -10,7 +10,7 @@ export default function Matching() {
   const [usingTicket, setUsingTicket] = useState(true);
   useEffect(() => {
     const interval = setInterval(() => {
-      setHour(23 - new Date().getHours());
+      setHour(21 - new Date().getHours());
       setMinute(59 - new Date().getMinutes());
       setSecond(59 - new Date().getSeconds());
     }, 1000);
