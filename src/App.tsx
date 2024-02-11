@@ -12,6 +12,8 @@ import Mypage from './pages/mypage/Mypage';
 import ForgetPassword1 from './pages/forgetPassword/ForgetPassword1';
 import ForgetPassword2 from './pages/forgetPassword/ForgetPassword2';
 import ForgetPassword3 from './pages/forgetPassword/ForgetPassword3';
+import ChangePassword from './pages/mypage/ChangePassword';
+import ChangeKakaotalkID from './pages/mypage/ChangeKakaotalkID';
 
 const App = () => (
   <Layout>
@@ -27,6 +29,8 @@ const App = () => (
       <Route path="/forgetpassword1" element={<ForgetPassword1 />} />
       <Route path="/forgetpassword2" element={<ForgetPassword2 />} />
       <Route path="/forgetpassword3" element={<ForgetPassword3 />} />
+      <Route path="/changepassword" element={<ChangePassword />} />
+      <Route path="/changekakaotalkid" element={<ChangeKakaotalkID />} />
     </Routes>
   </Layout>
 );

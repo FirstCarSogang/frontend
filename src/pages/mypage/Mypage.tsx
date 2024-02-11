@@ -4,9 +4,11 @@ import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
 import { ReactComponent as ArrowForwardSvg } from '../../assets/svg/arrowForward.svg';
 import { set } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 export default function Mypage() {
   const [isSlowTrain, setIsSlowtrain] = useState(true);
   const [isPush, setIsPush] = useState(true);
+  const navigate = useNavigate();
   return (
     <Flex
       pos="relative"
@@ -49,14 +51,30 @@ export default function Mypage() {
         </Text>
       </Flex>
       <Divider />
-      <Flex w="100%" justify="space-between" align="center">
+      <Flex
+        w="100%"
+        justify="space-between"
+        align="center"
+        onClick={() => {
+          navigate('/changekakaotalkid');
+        }}
+        cursor="pointer"
+      >
         <Text fontSize="18px" as="b" color="gray.800">
           카카오톡 아이디 변경
         </Text>
         <ArrowForwardSvg />
       </Flex>
       <Divider />
-      <Flex w="100%" justify="space-between" align="center">
+      <Flex
+        w="100%"
+        justify="space-between"
+        align="center"
+        onClick={() => {
+          navigate('/changepassword');
+        }}
+        cursor="pointer"
+      >
         <Text fontSize="18px" as="b" color="gray.800">
           비밀번호 변경
         </Text>
