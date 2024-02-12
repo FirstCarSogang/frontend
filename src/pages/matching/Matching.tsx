@@ -4,15 +4,16 @@ import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
 
 export default function Matching() {
-  const [hour, setHour] = useState(21 - new Date().getHours());
+  const [hour, setHour] = useState((45 - new Date().getHours()) % 24);
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
   const [usingTicket, setUsingTicket] = useState(true);
   useEffect(() => {
     const interval = setInterval(() => {
-      setHour(21 - new Date().getHours());
-      setMinute(59 - new Date().getMinutes());
-      setSecond(59 - new Date().getSeconds());
+      const now = new Date();
+      setHour((45 - now.getHours()) % 24);
+      setMinute(59 - now.getMinutes());
+      setSecond(59 - now.getSeconds());
     }, 1000);
     return () => clearInterval(interval);
   }, []);

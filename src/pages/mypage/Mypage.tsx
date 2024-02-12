@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
 import { ReactComponent as ArrowForwardSvg } from '../../assets/svg/arrowForward.svg';
+import { ReactComponent as LogOutSvg } from '../../assets/svg/logOut.svg';
 import { set } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 export default function Mypage() {
@@ -100,6 +101,20 @@ export default function Mypage() {
         </Flex>
       </Flex>
       <Divider />
+      <Flex
+        alignSelf="center"
+        gap="10px"
+        cursor="pointer"
+        flexGrow={1}
+        onClick={() => {
+          navigate('/login');
+        }}
+      >
+        <LogOutSvg style={{ color: '#718096', alignSelf: 'flex-end' }} />
+        <Text fontSize="14px" color="gray.500" alignSelf="flex-end">
+          로그아웃
+        </Text>
+      </Flex>
       <NavFooter />
     </Flex>
   );

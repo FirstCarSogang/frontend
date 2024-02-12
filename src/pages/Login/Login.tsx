@@ -15,18 +15,7 @@ export default function Login() {
       w="100%"
       h="100%"
     >
-      <HomeNav
-        title="첫차 서강"
-        button={
-          <Button
-            colorScheme="green"
-            size="md"
-            rightIcon={<TrainSvg color="white" />}
-          >
-            시작하기
-          </Button>
-        }
-      />
+      <HomeNav title="첫차 서강" button={<></>} />
       <LoginForm />
     </Flex>
   );

@@ -1,13 +1,13 @@
 import { Button, Center, Circle, Flex, Text } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as LeftArrowSvg } from '../../assets/svg/arrowBack.svg';
 import { ReactComponent as RightArrowSvg } from '../../assets/svg/arrowForward.svg';
 
 export default function Home22() {
   const ref1 = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const sectionsRef = useRef<RefObject<HTMLDivElement>[]>([]);
   const leftArrowClickHandler = () => {
     if (currentPage === 0) {
       return;
@@ -229,18 +229,39 @@ export default function Home22() {
         <Text fontSize="20px" as="b">
           상대방과의 만남을 선택해요
         </Text>
-        <Text fontSize="16px" mb="80px" textAlign="center">
+        <Text fontSize="16px" textAlign="center" mb="20px">
           3일의 시간이 지났다면 상대방과의 만남 여부를 선택할 수 있어요.
           <br />
           선택은 되돌릴 수 없다는 점!
           <br />
           신중하게 선택해주세요.
         </Text>
-        <Link to="/login">
-          <Button colorScheme="green" size="lg" variant="outline" w="80%">
-            시작하기
-          </Button>
-        </Link>
+        <Text fontSize="16px" as="b" color="gray.800">
+          보다 자세한 이용방법이 궁금하다면?
+        </Text>
+        <Text
+          fontSize="12px"
+          color="gray.500"
+          mb="40px"
+          cursor="pointer"
+          onClick={() => {
+            navigate('/home/guide');
+          }}
+        >
+          가이드라인 보러가기
+        </Text>
+
+        <Button
+          colorScheme="green"
+          size="lg"
+          variant="outline"
+          w="80%"
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
+          시작하기
+        </Button>
       </Flex>
       <Flex
         pos="fixed"
@@ -252,9 +273,9 @@ export default function Home22() {
       >
         {[0, 1, 2, 3].map((idx) => {
           if (idx === currentPage) {
-            return <Circle bg="gray.800" size="10px" />;
+            return <Circle bg="gray.800" size="10px" key={idx} />;
           } else {
-            return <Circle bg="gray.200" size="10px" />;
+            return <Circle bg="gray.200" size="10px" key={idx} />;
           }
         })}
       </Flex>

@@ -14,6 +14,7 @@ import {
   Tabs,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { set } from 'react-hook-form';
 import { type Question, Day1Question } from 'src/types/common';
 import { ReactComponent as CommentSvg } from '../../../../assets/svg/comment.svg';
 import Comment from './Comment';
@@ -33,7 +34,6 @@ export default function AnsweredDay1QCard({
   const opponentDay1Question = opponentQuestion as Day1Question;
   const [showingQuestion, setShowingQuestion] =
     useState<Day1Question>(opponentDay1Question);
-  const [isMyAnswer, setMyAnswer] = useState(false);
   const { isOpen, onToggle } = useDisclosure();
   return (
     <CardFooter p="10px 30px" flex="display" flexDir="column" gap="10px">
@@ -41,14 +41,14 @@ export default function AnsweredDay1QCard({
         <TabList>
           <Tab
             onClick={() => {
-              setMyAnswer(false);
+              setShowingQuestion(opponentDay1Question);
             }}
           >
             상대방의 답변
           </Tab>
           <Tab
             onClick={() => {
-              setMyAnswer(true);
+              setShowingQuestion(day1Question);
             }}
           >
             나의 답변

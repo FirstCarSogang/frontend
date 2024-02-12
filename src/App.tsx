@@ -14,12 +14,14 @@ import ForgetPassword2 from './pages/forgetPassword/ForgetPassword2';
 import ForgetPassword3 from './pages/forgetPassword/ForgetPassword3';
 import ChangePassword from './pages/mypage/ChangePassword';
 import ChangeKakaotalkID from './pages/mypage/ChangeKakaotalkID';
+import Guide from './pages/home/Guide';
 
 const App = () => (
   <Layout>
     <Routes>
       <Route path="/" element={<Home1 />} />
       <Route path="/home2" element={<Home2 />} />
+      <Route path="/home/guide" element={<Guide />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/slowtrain" element={<SlowTrain />} />
