@@ -6,25 +6,23 @@ import {
   Progress,
   Text,
   theme,
+  useDisclosure,
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import HomeNav from '../../components/HomeNav';
 import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
 import GuideCard from './GuideCard';
+import GuideModal from '../../components/GuideModal';
 
 export default function Guide() {
   const progressRef = useRef<HTMLDivElement | null>(null);
   const [progressingPerCent, setProgressingPerCent] = useState(0);
+  const { isOpen, onClose, onToggle } = useDisclosure();
   useEffect(() => {
-    console.log(progressRef.current);
     const handleScroll = () => {
       const { scrollTop, scrollHeight, clientHeight } =
         progressRef.current || {};
       setProgressingPerCent(
-        ((scrollTop || 0) / ((scrollHeight || 1) - (clientHeight || 0))) * 100,
-      );
-      //console.log(scrollTop, scrollHeight, clientHeight);
-      console.log(
         ((scrollTop || 0) / ((scrollHeight || 1) - (clientHeight || 0))) * 100,
       );
     };
@@ -55,6 +53,7 @@ export default function Guide() {
         },
       }}
     >
+      <GuideModal isOpen={isOpen} onClose={onClose} />
       <Progress
         value={progressingPerCent}
         colorScheme="green"
@@ -133,7 +132,7 @@ export default function Guide() {
             <Text fontSize="14px" color="gray.400">
               티켓을 통해서 탑승할 수 있어요
             </Text>
-            <Button w="100%" colorScheme="green">
+            <Button w="100%" colorScheme="green" onClick={onToggle}>
               티켓이 뭔가요?
             </Button>
           </GuideCard>

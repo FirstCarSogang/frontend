@@ -1,13 +1,23 @@
-import { Box, Button, Flex, Img, Switch, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Img,
+  Switch,
+  Text,
+  useDisclosure,
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
+import GuideModal from '../../components/GuideModal';
 
 export default function Matching() {
   const [hour, setHour] = useState((45 - new Date().getHours()) % 24);
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
   const [usingTicket, setUsingTicket] = useState(true);
+  const { isOpen, onClose, onToggle } = useDisclosure();
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -29,6 +39,7 @@ export default function Matching() {
       overflowY="scroll"
       gap="20px"
     >
+      <GuideModal isOpen={isOpen} onClose={onClose} />
       <HomeNav
         title="매칭"
         button={<Button colorScheme="green">매칭가이드</Button>}
@@ -66,7 +77,13 @@ export default function Matching() {
           {usingTicket ? '티켓 사용' : '티켓 미사용'}
         </Text>
       </Flex>
-      <Text fontSize="12px" color="gray.500" mb="40px">
+      <Text
+        fontSize="12px"
+        color="gray.500"
+        mb="40px"
+        onClick={onToggle}
+        cursor="pointer"
+      >
         티켓 사용법/열차 탑승법이 궁금하다면?
       </Text>
       <NavFooter />
