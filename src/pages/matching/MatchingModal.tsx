@@ -11,19 +11,19 @@ import {
 
 interface LoginModalProps {
   isOpen: boolean;
-  toggle: () => void;
+  onClose: () => void;
 }
 
-export default function LoginModal({ isOpen, toggle }: LoginModalProps) {
+export default function MatchingModal({ isOpen, onClose }: LoginModalProps) {
   return (
-    <Modal isOpen={isOpen} onClose={toggle} isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent m="0 10px">
-        <ModalHeader>로그인 성공</ModalHeader>
-        <ModalBody>로그인에 성공했습니다.</ModalBody>
+        <ModalHeader>티켓 도착!</ModalHeader>
+        <ModalBody>월요일이 되어 티켓 한 장이 도착했어요</ModalBody>
         <ModalFooter>
-          <Button colorScheme="green" onClick={toggle}>
-            닫기
+          <Button colorScheme="green" mr={3} onClick={onClose}>
+            확인
           </Button>
         </ModalFooter>
       </ModalContent>
