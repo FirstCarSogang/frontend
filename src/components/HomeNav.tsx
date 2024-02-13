@@ -52,7 +52,7 @@ export default function HomeNav({ title, button = null }: HomeNavProps) {
           {title}
         </Text>
       </Link>
-      <Link to="/login">{button}</Link>
+      {button}
     </Flex>
   );
 }

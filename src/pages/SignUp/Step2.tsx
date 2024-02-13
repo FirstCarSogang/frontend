@@ -205,7 +205,7 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
             body1="- 3일동안 질문에 답하며 서로를 알아갈 수 있어요"
             body2="- 열차운행이 종료되면 티켓을 획득해요"
             footer={<Button colorScheme="green">일반열차 선택</Button>}
-            selected={selectedTrain === 'normal'}
+            selected={selectedTrain === 'slow'}
           />
         </Box>
         <Box

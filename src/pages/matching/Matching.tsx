@@ -11,12 +11,14 @@ import React, { useEffect, useState } from 'react';
 import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
 import GuideModal from '../../components/GuideModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Matching() {
   const [hour, setHour] = useState((45 - new Date().getHours()) % 24);
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
   const [usingTicket, setUsingTicket] = useState(true);
+  const navigate = useNavigate();
   const { isOpen, onClose, onToggle } = useDisclosure();
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,7 +44,11 @@ export default function Matching() {
       <GuideModal isOpen={isOpen} onClose={onClose} />
       <HomeNav
         title="매칭"
-        button={<Button colorScheme="green">매칭가이드</Button>}
+        button={
+          <Button colorScheme="green" onClick={onToggle}>
+            매칭가이드
+          </Button>
+        }
       />
       <Text fontSize="24px" as="b" color="gray.800">
         내가 등록한 사진

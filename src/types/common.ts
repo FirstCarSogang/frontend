@@ -66,7 +66,6 @@ export interface Ticket {
 export interface FastTicket {
   ticketNumber: number; //티켓 번호
   choose?: boolean; //선택 여부
-  withWhom: string; //상대방 이름
-  id: number; //티켓 고유번호/id -> 상대방 티켓과 같음
+  id: number; //티켓 고유번호/id 
   isAnswered: boolean;
 }

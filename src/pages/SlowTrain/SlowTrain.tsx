@@ -418,10 +418,22 @@ export default function SlowTrain() {
   return (
     <Box pos="relative" p="80px 0" w="100%" h="100%" overflowY="scroll">
       <HomeNav title="열차" button={<></>} />
-      <Tabs variant="soft-rounded" colorScheme="green" mb="20px" p="0 20px">
+      <Tabs
+        variant="soft-rounded"
+        colorScheme="green"
+        mb="20px"
+        p="0 20px"
+        defaultIndex={0}
+      >
         <TabList>
           <Tab mr="5px">일반</Tab>
-          <Tab>급행</Tab>
+          <Tab
+            onClick={() => {
+              navigate('/fasttrain');
+            }}
+          >
+            급행
+          </Tab>
         </TabList>
       </Tabs>
       {DUMMYTICKETS.map((ticket) => (

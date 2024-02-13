@@ -13,9 +13,11 @@ import HomeNav from '../../components/HomeNav';
 import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
 import GuideCard from './GuideCard';
 import GuideModal from '../../components/GuideModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Guide() {
   const progressRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
   const [progressingPerCent, setProgressingPerCent] = useState(0);
   const { isOpen, onClose, onToggle } = useDisclosure();
   useEffect(() => {
@@ -73,6 +75,9 @@ export default function Guide() {
             colorScheme="green"
             size="md"
             rightIcon={<TrainSvg color="white" />}
+            onClick={() => {
+              navigate('/login');
+            }}
           >
             시작하기
           </Button>

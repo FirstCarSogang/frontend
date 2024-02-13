@@ -15,6 +15,7 @@ import ForgetPassword3 from './pages/forgetPassword/ForgetPassword3';
 import ChangePassword from './pages/mypage/ChangePassword';
 import ChangeKakaotalkID from './pages/mypage/ChangeKakaotalkID';
 import Guide from './pages/home/Guide';
+import FastTrain from './pages/FastTrain/FastTrain';
 
 const App = () => (
   <Layout>
@@ -25,6 +26,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/slowtrain" element={<SlowTrain />} />
+      <Route path="/fasttrain" element={<FastTrain />} />
       <Route path="slowtrain/:ticketnumber" element={<TicketNumber />} />
       <Route path="/matching" element={<Matching />} />
       <Route path="/mypage" element={<Mypage />} />
