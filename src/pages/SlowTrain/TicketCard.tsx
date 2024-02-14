@@ -12,8 +12,10 @@ import {
   Text,
   useDisclosure,
   useSteps,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import TrainQuitModal from '../../components/TrainQuitModal';
 import TrainReportModal from '../../components/TrainReportModal';
 
@@ -40,6 +42,7 @@ export default function TicketCard({
   ticketNumber,
 }: TrainCardProps) {
   const { activeStep } = useSteps({ index: progressingDay - 1, count: 10 });
+  const toast = useToast();
   const {
     isOpen: isQuitOpen,
     onClose: onCloseQuit,
@@ -50,6 +53,15 @@ export default function TicketCard({
     onClose: onCloseReport,
     onToggle: onToggleReport,
   } = useDisclosure();
+  const reportSubmitHandler = () => {
+    onCloseReport();
+    toast({
+      title: '신고가 접수되었습니다.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+  };
   return (
     <Box
       display="flex"
@@ -64,10 +76,13 @@ export default function TicketCard({
       }}
       cursor="pointer"
       _hover={{ bg: 'gray.50' }}
-      pt="5px"
     >
       <TrainQuitModal isOpen={isQuitOpen} onClose={onCloseQuit} />
-      <TrainReportModal isOpen={isReportOpen} onClose={onCloseReport} />
+      <TrainReportModal
+        isOpen={isReportOpen}
+        onClose={onCloseReport}
+        onSummit={reportSubmitHandler}
+      />
       <Box
         display="flex"
         flexDir="column"
@@ -76,6 +91,7 @@ export default function TicketCard({
         flexShrink={0}
         scrollSnapAlign="start"
         onClick={onClick}
+        pt="5px"
       >
         <Text fontSize="18px" as="b" p="0 20px">
           {ticketNumber}번째 티켓
@@ -97,8 +113,8 @@ export default function TicketCard({
         <Divider />
       </Box>
       <Center
-        w="93px"
-        h="93px"
+        w="98px"
+        h="98px"
         bg="red.500"
         flexShrink={0}
         scrollSnapAlign="end"
@@ -109,8 +125,8 @@ export default function TicketCard({
         </Text>
       </Center>
       <Center
-        w="93px"
-        h="93px"
+        w="98px"
+        h="98px"
         bg="gray.400"
         color="white"
         flexShrink={0}

@@ -55,7 +55,7 @@ export default function GuideModal({ isOpen, onClose }: GuideModalProps) {
             열차 탑승법
           </Text>
           <Text fontSize="14px" color="gray.500">
-            티켓사용 토글을 켜 놓으면 22시에 자동으로 매칭돼요
+            티켓사용 스위치를 켜 놓으면 22시에 자동으로 매칭돼요
           </Text>
           <Text fontSize="14px" color="gray.500">
             티켓은 하루에 한 개씩만 사용 가능해요
@@ -64,7 +64,7 @@ export default function GuideModal({ isOpen, onClose }: GuideModalProps) {
             매칭은 랜덤으로 이루어져요
           </Text>
           <Text fontSize="14px" color="gray.500">
-            티켓은 소중하니깐 티켓사용 토글은 다음날 자동으로 Off로 변해요
+            티켓은 소중하니깐 티켓사용 스위치는 다음날 자동으로 Off로 변해요
           </Text>
         </ModalBody>
       </ModalContent>

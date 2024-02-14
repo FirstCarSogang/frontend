@@ -13,11 +13,13 @@ import {
 interface TrainReportModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSummit: () => void;
 }
 
 export default function TrainReportModal({
   isOpen,
   onClose,
+  onSummit,
 }: TrainReportModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -37,7 +39,7 @@ export default function TrainReportModal({
           <Button colorScheme="gray" mr={3} onClick={onClose}>
             취소
           </Button>
-          <Button colorScheme="green" onClick={onClose}>
+          <Button colorScheme="green" onClick={onSummit}>
             제출하기
           </Button>
         </ModalFooter>

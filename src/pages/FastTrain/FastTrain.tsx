@@ -46,7 +46,7 @@ export default function SlowTrain() {
         variant="soft-rounded"
         colorScheme="green"
         mb="20px"
-        p="0 20px"
+        p="0 10px"
         defaultIndex={1}
       >
         <TabList>

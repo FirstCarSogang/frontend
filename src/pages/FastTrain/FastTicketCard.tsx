@@ -1,6 +1,7 @@
 import { Card, CardBody, Text } from '@chakra-ui/react';
 import { ReactComponent as ArrowRightSvg } from '../../assets/svg/arrowForward.svg';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface FastTicketCardProps {
   ticketNumber: number;
@@ -8,8 +9,15 @@ interface FastTicketCardProps {
 }
 
 export default function FastTicketCard({ ticketNumber }: FastTicketCardProps) {
+  const navigate = useNavigate();
   return (
-    <Card w="100%" mb="10px">
+    <Card
+      w="100%"
+      mb="10px"
+      onClick={() => {
+        navigate(`./${ticketNumber}`);
+      }}
+    >
       <CardBody
         display="flex"
         w="100%"
