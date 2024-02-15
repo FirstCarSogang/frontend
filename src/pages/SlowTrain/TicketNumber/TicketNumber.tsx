@@ -1,7 +1,15 @@
-import { Box, CloseButton, Flex, Text } from '@chakra-ui/react';
-import React, { Fragment } from 'react';
+import {
+  Box,
+  CloseButton,
+  Flex,
+  Text,
+  useDisclosure,
+  useToast,
+} from '@chakra-ui/react';
+import React, { Fragment, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { type Ticket, Question } from 'src/types/common';
+import ChooseModal from './ChooseModal';
 import DayCard from './DayCard';
 
 //상대방의 응답
@@ -128,6 +136,15 @@ const DUMMYopponentsQuestion: Question[] = [
     isAnswered: false,
   },
 ];
+
+const DUMMYOPPOTICKET: Ticket = {
+  ticketNumber: 1,
+  progressingDay: 4,
+  DayQuestion: DUMMYopponentsQuestion,
+  withWhom: '최환',
+  choose: true,
+  id: 1,
+};
 
 //10일치 질문이 담긴 티켓
 const DUMMYTICKETS: Ticket[] = [
@@ -405,7 +422,7 @@ const DUMMYTICKETS: Ticket[] = [
   },
   {
     ticketNumber: 3,
-    progressingDay: 3,
+    progressingDay: 4,
     DayQuestion: [
       {
         question: '자기소개',
@@ -539,6 +556,26 @@ export default function TicketNumber() {
   const ticketNumber = useParams().ticketnumber;
   const DUMMYTICKET = DUMMYTICKETS[Number(ticketNumber) - 1];
   const navigate = useNavigate();
+  const { isOpen, onToggle, onClose } = useDisclosure();
+  const toast = useToast();
+  const acceptHandler = () => {
+    onToggle();
+  };
+  const rejectHandler = () => {
+    navigate('/slowtrain');
+    toast({
+      title: '거절을 선택하셨습니디. 티켓이 소멸됩니다.',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+  useEffect(() => {
+    if (DUMMYTICKET.progressingDay === 4) {
+      onToggle();
+    }
+  }, []);
+  console.log(DUMMYOPPOTICKET.choose, DUMMYTICKET.choose);
   return (
     <Flex
       w="100%"
@@ -552,6 +589,12 @@ export default function TicketNumber() {
       pl="10px"
       overflowY="scroll"
     >
+      <ChooseModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onAccept={acceptHandler}
+        onReject={rejectHandler}
+      />
       <Flex
         pos="fixed"
         top={0}
@@ -573,6 +616,55 @@ export default function TicketNumber() {
           {ticketNumber}번째 티켓
         </Text>
       </Flex>
+      {DUMMYTICKET.progressingDay >= 4 &&
+        DUMMYTICKET.choose &&
+        (DUMMYOPPOTICKET.choose ? (
+          <Flex
+            bg="gray.300"
+            w="100%"
+            h="40px"
+            p="0 20px"
+            align="center"
+            justify="space-between"
+            borderRadius="5px"
+          >
+            <Text fontSize="14px" as="b" color="white">
+              상대방의 카카오톡 아이디
+            </Text>
+            <Text fontSize="12px" as="b" color="white">
+              saint1234
+            </Text>
+          </Flex>
+        ) : DUMMYOPPOTICKET.choose === false ? (
+          <Flex
+            bg="gray.300"
+            w="100%"
+            h="40px"
+            p="0 20px"
+            align="center"
+            justify="space-between"
+            borderRadius="5px"
+          >
+            <Text fontSize="14px" as="b" color="white">
+              상대방이 거절했습니다.
+            </Text>
+          </Flex>
+        ) : (
+          <Flex
+            bg="gray.300"
+            w="100%"
+            h="40px"
+            p="0 20px"
+            align="center"
+            justify="space-between"
+            borderRadius="5px"
+          >
+            <Text fontSize="14px" as="b" color="white">
+              상대방의 응답을 기다리고 있어요...
+            </Text>
+          </Flex>
+        ))}
+
       {DUMMYTICKET.progressingDay < 4
         ? //progressingDay가 3일차 이하일 때 -> DayCard 3장만 렌더링
           DUMMYTICKET.DayQuestion.map((question, index) => {

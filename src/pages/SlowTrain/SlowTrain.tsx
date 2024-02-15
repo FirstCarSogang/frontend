@@ -282,7 +282,7 @@ const DUMMYTICKETS: Ticket[] = [
   },
   {
     ticketNumber: 3,
-    progressingDay: 3,
+    progressingDay: 4,
     DayQuestion: [
       {
         question: '자기소개',

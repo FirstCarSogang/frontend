@@ -13,7 +13,10 @@ const theme = extendTheme({
         padding: 0,
         fontFamily: 'Pretendard',
         boxSizing: 'border-box',
+      },
+      div: {
         overflowY: 'scroll',
+        flexShrink: 0,
       },
     },
   },
