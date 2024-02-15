@@ -17,6 +17,7 @@ import ChangeKakaotalkID from './pages/mypage/ChangeKakaotalkID';
 import Guide from './pages/home/Guide';
 import FastTrain from './pages/FastTrain/FastTrain';
 import FastTicketNumber from './pages/FastTrain/TicketNumber/TicketNumber';
+import Accpeted from './pages/FastTrain/TicketNumber/Accpeted';
 
 const App = () => (
   <Layout>
@@ -30,6 +31,7 @@ const App = () => (
       <Route path="/fasttrain" element={<FastTrain />} />
       <Route path="slowtrain/:ticketnumber" element={<SlowTicketNumber />} />
       <Route path="fasttrain/:ticketnumber" element={<FastTicketNumber />} />
+      <Route path="fasttrain/:ticketnumber/accepted" element={<Accpeted />} />
       <Route path="/matching" element={<Matching />} />
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/forgetpassword1" element={<ForgetPassword1 />} />
