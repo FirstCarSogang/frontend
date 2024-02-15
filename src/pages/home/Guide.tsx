@@ -75,9 +75,7 @@ export default function Guide() {
             colorScheme="green"
             size="md"
             rightIcon={<TrainSvg color="white" />}
-            onClick={() => {
-              navigate('/login');
-            }}
+            onClick={()=>{navigate('/login')}}
           >
             시작하기
           </Button>

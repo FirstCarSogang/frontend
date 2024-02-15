@@ -33,10 +33,15 @@ export default function ChooseModal({
           상대방과의 대화를 이어갈까요?
         </ModalBody>
         <ModalFooter display="flex" w="100%" gap="10px">
-          <Button colorScheme="green" onClick={onAccept} w="100%">
+          <Button
+            colorScheme="green"
+            onClick={onAccept}
+            w="100%"
+            flexShrink={1}
+          >
             수락
           </Button>
-          <Button colorScheme="gray" onClick={onReject} w="100%">
+          <Button colorScheme="gray" onClick={onReject} w="100%" flexShrink={1}>
             거절
           </Button>
         </ModalFooter>

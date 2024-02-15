@@ -14,25 +14,9 @@ const theme = extendTheme({
         fontFamily: 'Pretendard',
         boxSizing: 'border-box',
       },
-      div: {
-        overflowY: 'scroll',
+      button: {
         flexShrink: 0,
       },
-    },
-  },
-  layerStyles: {
-    homeWrapper: {
-      w: '100%',
-      h: '100%',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      pos: 'relative',
-      backgroundImage: `url('/img/Train.JPG')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      p: '10px',
-      gap: '20px',
     },
   },
 });

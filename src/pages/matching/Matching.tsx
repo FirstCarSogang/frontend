@@ -3,23 +3,62 @@ import {
   Button,
   Flex,
   Img,
+  Input,
   Switch,
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import NavFooter from '../../components/NavFooter';
 import HomeNav from '../../components/HomeNav';
 import GuideModal from '../../components/GuideModal';
 import { useNavigate } from 'react-router-dom';
+import ImgChangeModal from './ImgChangeModal';
 
 export default function Matching() {
+  const img1Ref = useRef<HTMLInputElement>(null);
+  const img2Ref = useRef<HTMLInputElement>(null);
+  const img3Ref = useRef<HTMLInputElement>(null);
   const [hour, setHour] = useState((45 - new Date().getHours()) % 24);
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
   const [usingTicket, setUsingTicket] = useState(true);
   const navigate = useNavigate();
-  const { isOpen, onClose, onToggle } = useDisclosure();
+  const {
+    isOpen: isOpenGuide,
+    onClose: onCloseGuide,
+    onToggle: onToggleGuide,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenImg1,
+    onClose: onCloseImg1,
+    onToggle: onToggleImg1,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenImg2,
+    onClose: onCloseImg2,
+    onToggle: onToggleImg2,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenImg3,
+    onClose: onCloseImg3,
+    onToggle: onToggleImg3,
+  } = useDisclosure();
+  const img1ChangeHandler = () => {
+    if (img1Ref.current) {
+      img1Ref.current.click();
+    }
+  };
+  const img2ChangeHandler = () => {
+    if (img2Ref.current) {
+      img2Ref.current.click();
+    }
+  };
+  const img3ChangeHandler = () => {
+    if (img3Ref.current) {
+      img3Ref.current.click();
+    }
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -33,19 +72,34 @@ export default function Matching() {
     <Flex
       pos="relative"
       flexDir="column"
-      align="center"
       justify="center"
-      p="80px 30px"
+      align="center"
+      p="80px 30px 40px 30px"
       w="100%"
       h="100%"
       overflowY="scroll"
       gap="20px"
     >
-      <GuideModal isOpen={isOpen} onClose={onClose} />
+      <ImgChangeModal
+        isOpen={isOpenImg1}
+        onClose={onCloseImg1}
+        onClick={img1ChangeHandler}
+      />
+      <ImgChangeModal
+        isOpen={isOpenImg2}
+        onClose={onCloseImg2}
+        onClick={img2ChangeHandler}
+      />
+      <ImgChangeModal
+        isOpen={isOpenImg3}
+        onClose={onCloseImg3}
+        onClick={img3ChangeHandler}
+      />
+      <GuideModal isOpen={isOpenGuide} onClose={onCloseGuide} />
       <HomeNav
         title="매칭"
         button={
-          <Button colorScheme="green" onClick={onToggle}>
+          <Button colorScheme="green" onClick={onToggleGuide}>
             매칭가이드
           </Button>
         }
@@ -53,14 +107,44 @@ export default function Matching() {
       <Text fontSize="24px" as="b" color="gray.800">
         내가 등록한 사진
       </Text>
-      <Flex gap="10px">
-        <Box w="111px" h="111px" bg="gray.100" borderRadius="10px" />
-        <Box w="111px" h="111px" bg="gray.100" borderRadius="10px" />
-        <Box w="111px" h="111px" bg="gray.100" borderRadius="10px" />
+      <Flex gap="10px" w="100%" justify="center">
+        <Box
+          w="100%"
+          maxW="111px"
+          h="fit-content"
+          borderRadius="10px"
+          aspectRatio={1 / 1}
+          backgroundImage="url('/img/comment.png')"
+          backgroundSize="cover"
+          onClick={onToggleImg1}
+          cursor="pointer"
+        />
+        <Box
+          w="100%"
+          maxW="111px"
+          h="fit-content"
+          borderRadius="10px"
+          aspectRatio={1 / 1}
+          backgroundImage="url('/img/choose.png')"
+          backgroundSize="cover"
+          onClick={onToggleImg2}
+          cursor="pointer"
+        />
+        <Box
+          w="100%"
+          maxW="111px"
+          h="fit-content"
+          borderRadius="10px"
+          aspectRatio={1 / 1}
+          backgroundImage="url('/img/train.png')"
+          backgroundSize="cover"
+          onClick={onToggleImg3}
+          cursor="pointer"
+        />
       </Flex>
-      <Button colorScheme="green" flexShrink={0}>
-        사진 변경하기
-      </Button>
+      <Input type="file" display="none" ref={img1Ref} />
+      <Input type="file" display="none" ref={img2Ref} />
+      <Input type="file" display="none" ref={img3Ref} />
       <Text fontSize="12px" color="gray.500" mb="40px">
         내 타입은 22시마다 자동으로 갱신됩니다.
       </Text>
@@ -70,24 +154,25 @@ export default function Matching() {
       <Text fontSize="24px" as="b" color="gray.800">
         남은 티켓 갯수: 3개
       </Text>
-      <Flex gap="20px" align="center">
+      <Flex gap="40px" align="center" flexWrap="wrap" justify="center">
         <Img src="/img/Ticket.png" w="133px" h="100px" borderRadius="10px" />
-        <Switch
-          size="lg"
-          colorScheme="green"
-          isChecked={usingTicket}
-          onChange={() => setUsingTicket((prev) => !prev)}
-          ml="40px"
-        />
-        <Text fontSize="14px" as="b">
-          {usingTicket ? '티켓 사용' : '티켓 미사용'}
-        </Text>
+        <Flex gap="10px">
+          <Switch
+            size="lg"
+            colorScheme="green"
+            isChecked={usingTicket}
+            onChange={() => setUsingTicket((prev) => !prev)}
+          />
+          <Text fontSize="14px" as="b">
+            {usingTicket ? '티켓 사용' : '티켓 미사용'}
+          </Text>
+        </Flex>
       </Flex>
       <Text
         fontSize="12px"
         color="gray.500"
         mb="40px"
-        onClick={onToggle}
+        onClick={onToggleGuide}
         cursor="pointer"
       >
         티켓 사용법/열차 탑승법이 궁금하다면?

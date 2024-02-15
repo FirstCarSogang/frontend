@@ -627,6 +627,7 @@ export default function TicketNumber() {
             align="center"
             justify="space-between"
             borderRadius="5px"
+            flexShrink={0}
           >
             <Text fontSize="14px" as="b" color="white">
               상대방의 카카오톡 아이디
@@ -644,6 +645,7 @@ export default function TicketNumber() {
             align="center"
             justify="space-between"
             borderRadius="5px"
+            flexShrink={0}
           >
             <Text fontSize="14px" as="b" color="white">
               상대방이 거절했습니다.
@@ -658,6 +660,7 @@ export default function TicketNumber() {
             align="center"
             justify="space-between"
             borderRadius="5px"
+            flexShrink={0}
           >
             <Text fontSize="14px" as="b" color="white">
               상대방의 응답을 기다리고 있어요...
