@@ -3,6 +3,11 @@ import CreateDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query';
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
@@ -21,13 +26,17 @@ const theme = extendTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 const root = CreateDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <BrowserRouter>
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </QueryClientProvider>
   </BrowserRouter>,
 );
