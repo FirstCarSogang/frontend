@@ -66,7 +66,14 @@ export default function Accpeted() {
         flexDir="column"
         gap="60px"
       >
-        <Box w="111px" h="111px" bg="gray.100" borderRadius="10px" />
+        <Box
+          w="111px"
+          h="111px"
+          borderRadius="10px"
+          backgroundImage={`url('/img/comment.png')`}
+          backgroundSize="cover"
+          backgroundPosition="center"
+        />
         <Text fontSize="22px">
           {DUMMYOPPOTICKET
             ? DUMMYOPPOTICKET.choose === true

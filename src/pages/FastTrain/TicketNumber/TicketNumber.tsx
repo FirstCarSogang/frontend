@@ -80,16 +80,17 @@ export default function TicketNumber() {
         만남을 선택해주세요.
       </Text>
       <Flex alignSelf="center" flexGrow={1} justify="center" align="center">
-        <Box w="111px" h="111px" bg="gray.100" borderRadius="10px" />
+        <Box
+          w="111px"
+          h="111px"
+          borderRadius="10px"
+          backgroundImage={`url('/img/comment.png')`}
+          backgroundSize="cover"
+          backgroundPosition="center"
+        />
       </Flex>
-      <Flex alignSelf="flex-end" gap="2px">
-        <Text
-          fontSize="14px"
-          color="red.500"
-          as="b"
-          onClick={onToggle}
-          cursor="pointer"
-        >
+      <Flex alignSelf="flex-end" gap="2px" onClick={onToggle} cursor="pointer">
+        <Text fontSize="14px" color="red.500" as="b">
           신고하기
         </Text>
         <SirenSvg style={{ color: 'red' }} />

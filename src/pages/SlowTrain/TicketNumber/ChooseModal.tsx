@@ -25,7 +25,7 @@ export default function ChooseModal({
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent margin="0 10px">
         <ModalHeader>선택의 시간이 왔어요</ModalHeader>
         <ModalBody>
           3일의 시간이 지났어요. <br />
