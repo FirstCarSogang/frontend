@@ -19,8 +19,8 @@ export default function LoginModal({ isOpen, toggle }: LoginModalProps) {
     <Modal isOpen={isOpen} onClose={toggle} isCentered>
       <ModalOverlay />
       <ModalContent m="0 10px">
-        <ModalHeader>로그인 성공</ModalHeader>
-        <ModalBody>로그인에 성공했습니다.</ModalBody>
+        <ModalHeader>로그인 실패</ModalHeader>
+        <ModalBody>로그인에 실패했습니다. 다시 시도해주세요.</ModalBody>
         <ModalFooter>
           <Button colorScheme="green" onClick={toggle}>
             닫기

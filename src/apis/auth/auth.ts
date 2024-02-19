@@ -2,9 +2,10 @@ import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import axios from 'axios';
 import { type LoginPayload } from '../../types/payload';
 import { type LoginResponse } from '../../types/response';
+import { noAuthInstance } from '../instance';
 
 const login = async (payload: LoginPayload): Promise<LoginResponse> => {
-  return axios.post('/login', payload);
+  return noAuthInstance.post('/login', payload);
 };
 
 export const useLogin = () => {
@@ -13,4 +14,4 @@ export const useLogin = () => {
   };
 
   return useMutation(options);
-}
+};

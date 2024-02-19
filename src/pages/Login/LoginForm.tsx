@@ -31,7 +31,6 @@ export default function LoginForm() {
     getValues,
   } = useForm<LoginUser>();
   const [isShow, toggle] = useBoolean(false);
-  const [isLoginModalOpen, toggleLoginModal] = useBoolean(false);
   const [isErrorModalOpen, toggleErrorModal] = useBoolean(false);
   const navigate = useNavigate();
   const submitHandler: SubmitHandler<LoginUser> = async (data) => {
@@ -43,7 +42,7 @@ export default function LoginForm() {
         navigate('/matching');
       },
       onError: (error) => {
-        toggleLoginModal.toggle();
+        toggleErrorModal.toggle();
         console.log(error);
       },
     });
@@ -60,7 +59,7 @@ export default function LoginForm() {
         overflowY: 'scroll',
       }}
     >
-      <LoginModal isOpen={isLoginModalOpen} toggle={toggleLoginModal.toggle} />
+      <LoginModal isOpen={isErrorModalOpen} toggle={toggleErrorModal.toggle} />
       <Flex grow={1} w="100%" flexDir="column" align="center" gap="20px">
         <Text fontSize="40px" as="b">
           첫차 서강
