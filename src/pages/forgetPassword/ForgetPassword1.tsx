@@ -42,7 +42,7 @@ export default function ForgetPassword1() {
       { email },
       {
         onSuccess: () => {
-          navigate('/forgetpassword2');
+          navigate(`/forgetpassword2/?email=${email}`);
         },
         onError: (err) => {
           setIsError(true);

@@ -12,20 +12,21 @@ import React, { useState } from 'react';
 import { ReactComponent as Step2Svg } from '../../assets/svg/step2.svg';
 import { ReactComponent as MailSvg } from '../../assets/svg/mail.svg';
 import { ReactComponent as ArrowLeftSvg } from '../../assets/svg/arrowBack.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuthOTP } from '../../apis/forgetpassword/authOTP';
 
 export default function ForgetPassword2() {
   const navigate = useNavigate();
+  const email = useLocation().search.split('=')[1];
   const [pinInput, setPinInput] = useState('');
   const { mutate: authOTP, isPending } = useAuthOTP();
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     authOTP(
-      { otp: pinInput },
+      { otp: pinInput, email },
       {
         onSuccess: () => {
-          navigate('/forgetpassword3');
+          navigate(`/forgetpassword3/?email=${email}`);
         },
         onError: (err) => {
           console.log(err);
