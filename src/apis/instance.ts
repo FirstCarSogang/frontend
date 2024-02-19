@@ -49,7 +49,7 @@ const getRefreshToken = async (): Promise<string | void> => {
   }
 };
 
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   (res) => res,
   async (err) => {
     const {
@@ -68,7 +68,7 @@ axios.interceptors.response.use(
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
 
-    return axios(config);
+    return instance(config);
   },
 );
 

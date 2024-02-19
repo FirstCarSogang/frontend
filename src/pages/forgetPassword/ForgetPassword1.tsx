@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   FormControl,
@@ -6,14 +7,15 @@ import {
   Input,
   Text,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { LegacyRef, useRef, useState } from 'react';
 import { ReactComponent as Step1Svg } from '../../assets/svg/step1.svg';
 import { ReactComponent as MailSvg } from '../../assets/svg/mail.svg';
 import { useNavigate } from 'react-router-dom';
-import { set } from 'react-hook-form';
 import { useAuthEmail } from '../../apis/forgetpassword/authEmail';
+import { ReactComponent as ArrowLeftSvg } from '../../assets/svg/arrowBack.svg';
 
 export default function ForgetPassword1() {
+  const ref = useRef(null);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [email, setEmail] = useState('');
@@ -30,16 +32,21 @@ export default function ForgetPassword1() {
   };
 
   const { mutate: sendEmail, isPending } = useAuthEmail();
-  const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const submitHandler = (
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    e?.preventDefault();
     sendEmail(
       { email },
       {
         onSuccess: () => {
           navigate('/forgetpassword2');
         },
-        onError: () => {
+        onError: (err) => {
           setIsError(true);
+          console.log(err);
         },
       },
     );
@@ -55,7 +62,17 @@ export default function ForgetPassword1() {
       justify="center"
       p="60px"
       gap="50px"
+      position="relative"
     >
+      <Box
+        position="absolute"
+        top="20px"
+        left="20px"
+        onClick={() => navigate('/login')}
+        color="gray.700"
+      >
+        <ArrowLeftSvg />
+      </Box>
       <Step1Svg />
       <MailSvg />
       <Text fontSize="24px" as="b" color="gray.800">
@@ -71,10 +88,18 @@ export default function ForgetPassword1() {
           variant="flushed"
           focusBorderColor="green.400"
           onChange={inputChangeHandler}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              if (ref.current && !isError) {
+                submitHandler(e);
+              }
+            }
+          }}
         />
         <FormErrorMessage>세인트 이메일을 입력해주세요</FormErrorMessage>
       </FormControl>
       <Button
+        ref={ref}
         type="submit"
         colorScheme="green"
         w="100%"
