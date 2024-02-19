@@ -32,7 +32,8 @@ export default function GuideModal({ isOpen, onClose }: GuideModalProps) {
             티켓이란?
           </Text>
           <Text fontSize="14px" color="gray.500">
-            티켓을 사용해 열차를 탑승하여 22시에 무작위 찬구 1명과 매칭이 돼요
+            티켓을 사용해 열차를 탑승하여 22시에 나와 유사도가 가장 높은 친구
+            1명과 매칭이 돼요
           </Text>
           <Text fontSize="14px" color="gray.500">
             회원가입 시 3장의 티켓이 주어져요
@@ -49,7 +50,7 @@ export default function GuideModal({ isOpen, onClose }: GuideModalProps) {
           <Text fontSize="14px" color="gray.500">
             자신이 중도포기 -{'>'} 티켓을 못 돌려받음
             <br />
-            상대방이 중도포기 -{'<'} 티켓을 돌려받음
+            상대방이 중도포기 -{'>'} 티켓을 돌려받음
           </Text>
           <Text fontSize="18px" as="b" mt="20px">
             열차 탑승법

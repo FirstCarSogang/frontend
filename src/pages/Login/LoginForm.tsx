@@ -20,8 +20,10 @@ import { LoginUser } from '../../types/common';
 import axios from 'axios';
 import LoginModal from './LoginModal';
 import { Link, useNavigate } from 'react-router-dom';
+import { useLogin } from '../../apis/auth/auth';
 
 export default function LoginForm() {
+  const { mutate, isPending } = useLogin();
   const {
     handleSubmit,
     register,
@@ -33,21 +35,18 @@ export default function LoginForm() {
   const [isErrorModalOpen, toggleErrorModal] = useBoolean(false);
   const navigate = useNavigate();
   const submitHandler: SubmitHandler<LoginUser> = async (data) => {
-    // try {
-    //   const loginUser = await axios.get('http://localhost:3000/login');
-    // } catch (err) {
-    //   toggleErrorModal.toggle();
-    // }
-    navigate('/slowtrain');
-    toggleLoginModal.toggle();
-    // const loginUser = loginUser.filter(
-    //   (user) => user.studentId === data.studentId && user.password === data.password,
-    // )
-    // if (loginUser.length === 0) {
-    //   toggleLoginModal.toggle()
-    // } else {
-    //   navigate('/home')
-    // }
+    mutate(data, {
+      onSuccess: (data) => {
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('user', data.user);
+        navigate('/matching');
+      },
+      onError: (error) => {
+        toggleLoginModal.toggle();
+        console.log(error);
+      },
+    });
   };
   return (
     <form
@@ -126,8 +125,8 @@ export default function LoginForm() {
           type="submit"
           colorScheme="green"
           size="md"
-          isLoading={isSubmitting}
           w="100%"
+          isLoading={isPending || isSubmitting}
         >
           로그인
         </Button>

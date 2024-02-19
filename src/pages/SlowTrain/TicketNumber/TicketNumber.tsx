@@ -142,7 +142,7 @@ const DUMMYOPPOTICKET: Ticket = {
   progressingDay: 4,
   DayQuestion: DUMMYopponentsQuestion,
   withWhom: '최환',
-  choose: true,
+  choose: false,
   id: 1,
 };
 
@@ -326,7 +326,7 @@ const DUMMYTICKETS: Ticket[] = [
             from: '최환',
           },
         ],
-        isAnswered: true,
+        isAnswered: false,
       },
       {
         question1: '어제 먹은 점심은?',
@@ -423,6 +423,7 @@ const DUMMYTICKETS: Ticket[] = [
   {
     ticketNumber: 3,
     progressingDay: 4,
+    choose: true,
     DayQuestion: [
       {
         question: '자기소개',
