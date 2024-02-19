@@ -26,32 +26,32 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
     formState: { errors },
   } = useFormContext();
 
-  const [img1Preview, setImg1Preview] = useState<string | null>(null);
-  const [img2Preview, setImg2Preview] = useState<string | null>(null);
-  const [img3Preview, setImg3Preview] = useState<string | null>(null);
-  const img1 = watch('img1');
-  const img2 = watch('img2');
-  const img3 = watch('img3');
+  const [photo1Preview, setPhoto1Preview] = useState<string | null>(null);
+  const [photo2Preview, setPhoto2Preview] = useState<string | null>(null);
+  const [photo3Preview, setPhoto3Preview] = useState<string | null>(null);
+  const photo1 = watch('photo1');
+  const photo2 = watch('photo2');
+  const photo3 = watch('photo3');
   useEffect(() => {
-    if (img1 && img1.length > 0) {
-      const file1 = img1[0];
-      setImg1Preview(URL.createObjectURL(file1));
+    if (photo1 && photo1.length > 0) {
+      const file1 = photo1[0];
+      setPhoto1Preview(URL.createObjectURL(file1));
     }
-  }, [img1]);
+  }, [photo1]);
   useEffect(() => {
-    if (img2 && img2.length > 0) {
-      const file2 = img2[0];
-      setImg2Preview(URL.createObjectURL(file2));
-      console.log(img2);
+    if (photo2 && photo2.length > 0) {
+      const file2 = photo2[0];
+      setPhoto2Preview(URL.createObjectURL(file2));
+      console.log(photo2);
       console.log(URL.createObjectURL(file2));
     }
-  }, [img2]);
+  }, [photo2]);
   useEffect(() => {
-    if (img3 && img3.length > 0) {
-      const file3 = img3[0];
-      setImg3Preview(URL.createObjectURL(file3));
+    if (photo3 && photo3.length > 0) {
+      const file3 = photo3[0];
+      setPhoto3Preview(URL.createObjectURL(file3));
     }
-  }, [img3]);
+  }, [photo3]);
   return (
     <Flex
       flexDir="column"
@@ -73,18 +73,18 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
       </Text>
       <Flex w="100%" justify="center" align="center" gap="10px">
         <FormControl w="111px" h="111px">
-          {img1Preview ? (
+          {photo1Preview ? (
             <FormLabel
-              htmlFor="img1"
+              htmlFor="photo1"
               w="100%"
               h="100%"
               borderRadius="8px"
-              backgroundImage={`url('${img1Preview}')`}
+              backgroundImage={`url('${photo1Preview}')`}
               backgroundSize="cover"
             />
           ) : (
             <FormLabel
-              htmlFor="img1"
+              htmlFor="photo1"
               w="100%"
               h="100%"
               borderRadius="8px"
@@ -100,27 +100,27 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
 
           <Input
             type="file"
-            id="img1"
+            id="photo1"
             hidden
             accept="image/*"
-            {...register('img1', {
+            {...register('photo1', {
               required: { value: true, message: '사진을 올려주세요' },
             })}
           />
         </FormControl>
         <FormControl w="111px" h="111px">
-          {img2Preview ? (
+          {photo2Preview ? (
             <FormLabel
-              htmlFor="img2"
+              htmlFor="photo2"
               w="100%"
               h="100%"
               borderRadius="8px"
-              backgroundImage={`url('${img2Preview}')`} //왜 안되냐..
+              backgroundImage={`url('${photo2Preview}')`} //왜 안되냐..
               backgroundSize="cover"
             />
           ) : (
             <FormLabel
-              htmlFor="img2"
+              htmlFor="photo2"
               w="100%"
               h="100%"
               borderRadius="8px"
@@ -135,27 +135,27 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
           )}
           <Input
             type="file"
-            id="img2"
+            id="photo2"
             hidden
             accept="image/*"
-            {...register('img2', {
+            {...register('photo2', {
               required: { value: true, message: '사진을 올려주세요' },
             })}
           />
         </FormControl>
         <FormControl w="111px" h="111px">
-          {img3Preview ? (
+          {photo3Preview ? (
             <FormLabel
-              htmlFor="img3"
+              htmlFor="photo3"
               w="100%"
               h="100%"
               borderRadius="8px"
-              backgroundImage={`url('${img3Preview}')`} //왜 안되냐..
+              backgroundImage={`url('${photo3Preview}')`} //왜 안되냐..
               backgroundSize="cover"
             />
           ) : (
             <FormLabel
-              htmlFor="img3"
+              htmlFor="photo3"
               w="100%"
               h="100%"
               borderRadius="8px"
@@ -170,16 +170,16 @@ export default function Step2({ selectedTrain, setSelectedTrain }: Step2Props) {
           )}
           <Input
             type="file"
-            id="img3"
+            id="photo3"
             hidden
             accept="image/*"
-            {...register('img3', {
+            {...register('photo3', {
               required: { value: true, message: '사진을 올려주세요' },
             })}
           />
         </FormControl>
       </Flex>
-      {(errors.img1 || errors.img2 || errors.img3) && (
+      {(errors.photo1 || errors.photo2 || errors.photo3) && (
         <Text fontSize="12px" color="red.500">
           사진을 올려주세요
         </Text>

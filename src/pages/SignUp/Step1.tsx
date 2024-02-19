@@ -5,9 +5,11 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useSignUpSendEmail, useSignUpVerifyEmail } from '../../apis/auth/auth';
 
 interface SignUpForm {
   name: string;
@@ -33,17 +35,66 @@ export default function Step1({ onNext }: Step1Props) {
     clearErrors,
     formState: { errors },
   } = useFormContext<SignUpForm>();
+  const toast = useToast();
+  const [opt, setOpt] = useState<string>('');
   const [isEmailtouched, setisEmailTouched] = useState<boolean>(false);
   const [isValidationtouched, setisValidationTouched] =
     useState<boolean>(false);
-  const DUMMY_VALIDATION = '0000';
   const [isvalidationCorrect, setIsValidationCorrect] =
     useState<boolean>(false);
   const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
-  const validationHanlder = async () => {
+  const { mutate: sendEmail, isPending: isSendEmailPending } =
+    useSignUpSendEmail();
+  const sendEmailHandler = async () => {
     setIsButtonClicked(true);
-    alert('인증번호는 0000입니다.');
-    //const validation = await axios.post('http://localhost:3000/validation');
+    sendEmail(
+      { email: watch('email') },
+      {
+        onSuccess: () => {
+          toast({
+            title: '인증번호가 전송되었습니다',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+        onError: (error) => {
+          toast({
+            title: '인증번호 전송에 실패했습니다',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      },
+    );
+  };
+  const { mutate: verifyEmail, isPending: isVerifyEmailPending } =
+    useSignUpVerifyEmail();
+  const verfiyEmailHandler = () => {
+    verifyEmail(
+      { input_otp: opt },
+      {
+        onSuccess: () => {
+          setIsValidationCorrect(true);
+          toast({
+            title: '인증에 성공했습니다',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+        onError: (error) => {
+          toast({
+            title: '인증에 실패했습니다',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          });
+          setIsValidationCorrect(true); //지우기
+        },
+      },
+    );
   };
   const pwCheckHandler = () => {
     if (watch('password1') !== watch('password2')) {
@@ -211,7 +262,7 @@ export default function Step1({ onNext }: Step1Props) {
         colorScheme="green"
         size="sm"
         alignSelf="flex-end"
-        onClick={validationHanlder}
+        onClick={sendEmailHandler}
         flexShrink={0}
         isDisabled={!isEmailtouched || !!errors.email}
       >
@@ -224,18 +275,25 @@ export default function Step1({ onNext }: Step1Props) {
           w="100%"
           p="10px"
           focusBorderColor="green.500"
-          mb="40px"
           onFocus={() => {
             setisValidationTouched(true);
           }}
           onChange={(e) => {
-            if (e.target.value === DUMMY_VALIDATION) {
-              setIsValidationCorrect(true);
-            }
+            setOpt(e.target.value);
           }}
         />
       )}
-
+      {isButtonClicked && (
+        <Button
+          colorScheme="green"
+          size="sm"
+          alignSelf="flex-end"
+          flexShrink={0}
+          onClick={verfiyEmailHandler}
+        >
+          인증하기
+        </Button>
+      )}
       <Button
         colorScheme="green"
         size="sm"
