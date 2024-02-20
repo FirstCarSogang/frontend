@@ -45,3 +45,8 @@ export interface ChangeTrainPayload {
 export interface ChangeKakaotalkIdPayload {
   kakaotalkId: string;
 }
+
+export interface ChangePasswordPayload {
+  password: string;
+  new_password: string;
+}
