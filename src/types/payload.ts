@@ -37,3 +37,7 @@ export interface SignUpPayload {
   photo3: FileList;
   train: 'fast' | 'slow';
 }
+
+export interface ChangeTrainPayload {
+  train: 'fast' | 'slow';
+}

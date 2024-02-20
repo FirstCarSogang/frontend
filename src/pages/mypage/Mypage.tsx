@@ -16,6 +16,7 @@ import { set } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MypageResponse } from 'src/types/response';
 import { useSetting } from '../../apis/mypage/setting';
+import { useChangeTrain } from '../../apis/mypage/changeTrain';
 export default function Mypage() {
   const [isPush, setIsPush] = useState(true);
   const navigate = useNavigate();
@@ -39,6 +40,20 @@ export default function Mypage() {
   //       <Spinner />
   //     </Flex>
   //   );
+
+  const { mutate: changeTrain } = useChangeTrain();
+  const trainChangeHandler = () => {
+    changeTrain(
+      {
+        train: data?.train || 'slow',
+      },
+      {
+        onError: (error) => {
+          console.log(error);
+        },
+      },
+    );
+  };
   return (
     <Flex
       pos="relative"
@@ -55,16 +70,16 @@ export default function Mypage() {
       <Divider />
       <Flex w="100%" justify="space-between" align="center">
         <Text fontSize="18px" as="b" color="gray.800">
-          {data && data.train === 'fast' ? '급행열차' : '일반열차'}
+          {data && (data.train === 'fast' ? '급행열차' : '일반열차')}
         </Text>
-        <Flex align="center" gap="20px">
+        <Flex align="center" gap="20px" onClick={trainChangeHandler}>
           <Switch
             size="lg"
             colorScheme="green"
             isChecked={data && data.train === 'slow'}
           />
           <Text fontSize="18px" color="gray.800">
-            {data && data.train === 'slow' ? '일반열차' : '급행열차'}
+            {data && (data.train === 'slow' ? '일반열차' : '급행열차')}
           </Text>
         </Flex>
       </Flex>
@@ -74,7 +89,7 @@ export default function Mypage() {
           학번
         </Text>
         <Text fontSize="18px" color="gray.800">
-          2019xxxx
+          {data && data.studentId}
         </Text>
       </Flex>
       <Divider />

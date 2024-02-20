@@ -9,3 +9,7 @@ export interface MypageResponse {
   name: string;
   train: 'fast' | 'slow';
 }
+
+export interface ChangeTrainResponse {
+  train: 'fast' | 'slow';
+}
