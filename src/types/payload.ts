@@ -41,3 +41,7 @@ export interface SignUpPayload {
 export interface ChangeTrainPayload {
   train: 'fast' | 'slow';
 }
+
+export interface ChangeKakaotalkIdPayload {
+  kakaotalkId: string;
+}

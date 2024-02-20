@@ -13,3 +13,7 @@ export interface MypageResponse {
 export interface ChangeTrainResponse {
   train: 'fast' | 'slow';
 }
+
+export interface MyKakaotalkIdResponse {
+  kakaotalkId: string;
+}

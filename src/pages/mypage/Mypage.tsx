@@ -15,7 +15,7 @@ import { ReactComponent as LogOutSvg } from '../../assets/svg/logOut.svg';
 import { set } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MypageResponse } from 'src/types/response';
-import { useSetting } from '../../apis/mypage/setting';
+import { useSetting } from '../../apis/mypage/getSetting';
 import { useChangeTrain } from '../../apis/mypage/changeTrain';
 export default function Mypage() {
   const [isPush, setIsPush] = useState(true);
