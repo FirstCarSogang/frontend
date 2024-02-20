@@ -3,3 +3,9 @@ export interface LoginResponse {
   accessToken: string;
   refreshToken: string;
 }
+
+export interface MypageResponse {
+  studentId: string;
+  name: string;
+  train: 'fast' | 'slow';
+}

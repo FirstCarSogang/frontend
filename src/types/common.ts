@@ -8,12 +8,12 @@ export interface SignUpForm {
   password1: string;
   password2: string;
   studentId: string;
-  kakaotalkID: string;
+  kakaotalkId: string;
   email: string;
   photo1: FileList;
   photo2: FileList;
   photo3: FileList;
-  train: 'fast' | 'normal';
+  train: 'fast' | 'slow';
   date_joined: string;
   last_login: string;
 }
@@ -66,6 +66,6 @@ export interface Ticket {
 export interface FastTicket {
   ticketNumber: number; //티켓 번호
   choose?: boolean; //선택 여부
-  id: number; //티켓 고유번호/id 
+  id: number; //티켓 고유번호/id
   isAnswered: boolean;
 }

@@ -16,7 +16,7 @@ interface SignUpForm {
   password1: string;
   password2: string;
   studentId: string;
-  kakaotalkID: string;
+  kakaotalkId: string;
   email: string;
   photo1: string;
   photo2: string;
@@ -212,9 +212,9 @@ export default function Step1({ onNext }: Step1Props) {
       <Text fontSize="16px" alignSelf="flex-start">
         카카오톡 아이디
       </Text>
-      <FormControl isInvalid={!!errors.kakaotalkID}>
+      <FormControl isInvalid={!!errors.kakaotalkId}>
         <Input
-          {...register('kakaotalkID', {
+          {...register('kakaotalkId', {
             required: {
               value: true,
               message: '카카오톡 아이디를 입력해주세요',
@@ -227,7 +227,7 @@ export default function Step1({ onNext }: Step1Props) {
           focusBorderColor="green.500"
         />
         <FormErrorMessage>
-          {errors.kakaotalkID && errors.kakaotalkID?.message}
+          {errors.kakaotalkId && errors.kakaotalkId?.message}
         </FormErrorMessage>
       </FormControl>
       <Text fontSize="16px" alignSelf="flex-start">

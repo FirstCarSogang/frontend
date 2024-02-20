@@ -11,7 +11,7 @@ interface SignUpForm {
   password1: string;
   password2?: string;
   studentId: string;
-  kakaotalkID: string;
+  kakaotalkId: string;
   email: string;
   photo1: FileList;
   photo2: FileList;

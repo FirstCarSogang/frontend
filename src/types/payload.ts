@@ -30,7 +30,7 @@ export interface SignUpPayload {
   name: string;
   password1: string;
   studentId: string;
-  kakaotalkID: string;
+  kakaotalkId: string;
   email: string;
   photo1: FileList;
   photo2: FileList;
