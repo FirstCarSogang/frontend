@@ -23,5 +23,5 @@ export interface MatchingPageResponse {
   photo2: string;
   photo3: string;
   numberOfTickets: number;
-  ticketUse: boolean;
+  useTicket: boolean;
 }

@@ -15,6 +15,8 @@ import GuideModal from '../../components/GuideModal';
 import { useNavigate } from 'react-router-dom';
 import ImgChangeModal from './ImgChangeModal';
 import { useMatchingPage } from '@/apis/matching/getMatchingPage';
+import { useChangePhoto } from '@/apis/matching/changePhoto';
+import { useChangeUseTicket } from '@/apis/matching/changeUseTicket';
 
 export default function Matching() {
   const img1Ref = useRef<HTMLInputElement>(null);
@@ -23,7 +25,6 @@ export default function Matching() {
   const [hour, setHour] = useState((45 - new Date().getHours()) % 24);
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
-  const [usingTicket, setUsingTicket] = useState(true);
   const navigate = useNavigate();
   const {
     isOpen: isOpenGuide,
@@ -45,6 +46,16 @@ export default function Matching() {
     onClose: onCloseImg3,
     onToggle: onToggleImg3,
   } = useDisclosure();
+  const { mutate: changePhoto } = useChangePhoto();
+  const photoChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    photoNumber: number,
+  ) => {
+    if (e.target.files) {
+      changePhoto({ photo: e.target.files, photoNumber });
+    }
+    console.log(e.target.files);
+  };
   const img1ChangeHandler = () => {
     if (img1Ref.current) {
       img1Ref.current.click();
@@ -71,6 +82,11 @@ export default function Matching() {
   }, []);
 
   const { data } = useMatchingPage();
+
+  const { mutate } = useChangeUseTicket();
+  const changeUseTicketHandler = () => {
+    mutate({ useTicket: data?.useTicket || false });
+  };
   return (
     <Flex
       pos="relative"
@@ -145,9 +161,30 @@ export default function Matching() {
           cursor="pointer"
         />
       </Flex>
-      <Input type="file" display="none" ref={img1Ref} />
-      <Input type="file" display="none" ref={img2Ref} />
-      <Input type="file" display="none" ref={img3Ref} />
+      <Input
+        type="file"
+        display="none"
+        ref={img1Ref}
+        onChange={(e) => {
+          photoChangeHandler(e, 1);
+        }}
+      />
+      <Input
+        type="file"
+        display="none"
+        ref={img2Ref}
+        onChange={(e) => {
+          photoChangeHandler(e, 2);
+        }}
+      />
+      <Input
+        type="file"
+        display="none"
+        ref={img3Ref}
+        onChange={(e) => {
+          photoChangeHandler(e, 3);
+        }}
+      />
       <Text fontSize="12px" color="gray.500" mb="40px">
         내 타입은 22시마다 자동으로 갱신됩니다.
       </Text>
@@ -163,11 +200,11 @@ export default function Matching() {
           <Switch
             size="lg"
             colorScheme="green"
-            isChecked={usingTicket}
-            onChange={() => setUsingTicket((prev) => !prev)}
+            isChecked={data?.useTicket}
+            onChange={changeUseTicketHandler}
           />
           <Text fontSize="14px" as="b">
-            {data?.ticketUse ? '티켓 사용' : '티켓 미사용'}
+            {data?.useTicket ? '티켓 사용' : '티켓 미사용'}
           </Text>
         </Flex>
       </Flex>

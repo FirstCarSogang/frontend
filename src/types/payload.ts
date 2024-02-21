@@ -50,3 +50,12 @@ export interface ChangePasswordPayload {
   password: string;
   new_password: string;
 }
+
+export interface ChangePhotoPayload {
+  photo: FileList;
+  photoNumber: number;
+}
+
+export interface ChangeUseTicketPayload {
+  useTicket: boolean;
+}
