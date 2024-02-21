@@ -59,3 +59,51 @@ export interface ChangePhotoPayload {
 export interface ChangeUseTicketPayload {
   useTicket: boolean;
 }
+
+// ------------------------------
+
+//티켓 소거는 아무것도 필요없음
+
+export interface SlowTrainReportPayload {
+  user: string;
+  ticketNumber: number;
+  report: string;
+}
+
+export interface SlowTrainDay1AnswerPayload {
+  user: string;
+  ticketNumber: number;
+  answer: string;
+}
+
+export interface SlowTrainAfterDay1AnswerPayload {
+  user: string;
+  ticketNumber: number;
+  answer1: string;
+  answer2: string;
+}
+
+export interface SlowTrainCommentPayload {
+  user: string;
+  ticketNumber: number;
+  comment: string;
+}
+
+export interface SlowtrainChoosePayload {
+  user: string;
+  ticketNumber: number;
+  choose: boolean;
+}
+
+export interface FastTrainReportPayload {
+  user: string;
+  ticketNumber: number;
+  report: string;
+}
+
+export interface FastTriainChoosePayload {
+  user: string;
+  ticketNumber: number;
+  choose: boolean;
+}
+

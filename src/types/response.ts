@@ -1,3 +1,5 @@
+import { FastTicket, Ticket } from './common';
+
 export interface LoginResponse {
   user: string;
   accessToken: string;
@@ -24,4 +26,23 @@ export interface MatchingPageResponse {
   photo3: string;
   numberOfTickets: number;
   useTicket: boolean;
+}
+
+// ------------------
+
+export interface SlowTrainResponse {
+  tickets: Ticket[];
+}
+
+export interface FastTrainResponse {
+  tickets: FastTicket[];
+}
+
+export interface SlowTrainCardResponse {
+  userTicket: Ticket;
+  OpponentTicket: Ticket;
+}
+
+export interface FastTrainCardResponse {
+  OpponentPhoto: string;
 }
