@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { type ForgetPassword2Payload } from 'src/types/payload';
+import { type ForgetPassword2Payload } from '@/types/payload';
 import { noAuthInstance } from '../instance';
 
 const authOTP = async (payload: ForgetPassword2Payload) => {

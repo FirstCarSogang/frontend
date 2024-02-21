@@ -55,3 +55,19 @@ export const useSignUp = () => {
   };
   return useMutation(options);
 };
+
+const logout = async () => {
+  return axios.delete('/logout');
+};
+
+export const useLogout = () => {
+  const options = {
+    mutationFn: logout,
+    onSuccess: () => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+    },
+  };
+  return useMutation(options);
+};

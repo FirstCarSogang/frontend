@@ -1,4 +1,4 @@
-import { MyKakaotalkIdResponse } from 'src/types/response';
+import { MyKakaotalkIdResponse } from '@/types/response';
 import { instance } from '../instance';
 import { useQuery } from '@tanstack/react-query';
 

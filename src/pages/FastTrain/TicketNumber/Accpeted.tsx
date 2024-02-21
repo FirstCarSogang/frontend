@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { type FastTicket } from 'src/types/common';
+import { type FastTicket } from '@/types/common';
 import TrainReportModal from '../../../components/TrainReportModal';
 
 const DUMMYOPPOTICKET: FastTicket = {

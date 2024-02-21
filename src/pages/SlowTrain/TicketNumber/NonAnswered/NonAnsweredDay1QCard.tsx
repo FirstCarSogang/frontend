@@ -1,6 +1,6 @@
 import { Text, Textarea, CardFooter, Button } from '@chakra-ui/react';
 import React from 'react';
-import { type Question, Day1Question } from 'src/types/common';
+import { type Question, Day1Question } from '@/types/common';
 
 interface Day1QuestionCardProps {
   question: Question;

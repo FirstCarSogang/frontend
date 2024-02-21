@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import React, { Fragment, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { type Ticket, Question } from 'src/types/common';
+import { type Ticket, Question } from '@/types/common';
 import ChooseModal from './ChooseModal';
 import DayCard from './DayCard';
 

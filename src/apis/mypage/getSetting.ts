@@ -1,6 +1,6 @@
 import { instance } from '../instance';
 import { useQuery } from '@tanstack/react-query';
-import { MypageResponse } from 'src/types/response';
+import { MypageResponse } from '@/types/response';
 
 const setting = async (): Promise<MypageResponse> => {
   return instance.get('/setting');

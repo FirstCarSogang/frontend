@@ -17,7 +17,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { type Question, AfterDay1Question } from 'src/types/common';
+import { type Question, AfterDay1Question } from '@/types/common';
 import { ReactComponent as CommentSvg } from '../../../../assets/svg/comment.svg';
 import Comment from './Comment';
 

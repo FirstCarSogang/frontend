@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { ChangeKakaotalkIdPayload } from 'src/types/payload';
+import { ChangeKakaotalkIdPayload } from '@/types/payload';
 import { instance } from '../instance';
 
 const changeKakaotalkId = async (payload: ChangeKakaotalkIdPayload) => {

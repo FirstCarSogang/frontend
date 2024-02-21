@@ -11,6 +11,9 @@
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+    },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

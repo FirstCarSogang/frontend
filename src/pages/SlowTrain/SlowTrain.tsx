@@ -3,7 +3,7 @@ import HomeNav from '../../components/HomeNav';
 import React from 'react';
 import TicketCard from './TicketCard';
 import { useNavigate } from 'react-router-dom';
-import { type Ticket } from 'src/types/common';
+import { type Ticket } from '@/types/common';
 import NavFooter from '../../components/NavFooter';
 
 //10일치 질문이 담긴 티켓

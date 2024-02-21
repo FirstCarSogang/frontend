@@ -2,7 +2,7 @@ import { Box, Flex, Tab, TabList, Tabs } from '@chakra-ui/react';
 import HomeNav from '../../components/HomeNav';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { type FastTicket } from 'src/types/common';
+import { type FastTicket } from '@/types/common';
 import NavFooter from '../../components/NavFooter';
 import FastTicketCard from './FastTicketCard';
 

@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import { ChangeTrainPayload } from 'src/types/payload';
-import { ChangeTrainResponse } from 'src/types/response';
+import { ChangeTrainPayload } from '@/types/payload';
+import { ChangeTrainResponse } from '@/types/response';
 import { instance } from '../instance';
 
 const changeTrain = async (

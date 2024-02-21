@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { ChangePasswordPayload } from 'src/types/payload';
+import { ChangePasswordPayload } from '@/types/payload';
 import { instance } from '../instance';
 
 const changePassword = async (payload: ChangePasswordPayload) => {

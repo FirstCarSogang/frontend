@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { set } from 'react-hook-form';
-import { type Question, Day1Question } from 'src/types/common';
+import { type Question, Day1Question } from '@/types/common';
 import { ReactComponent as CommentSvg } from '../../../../assets/svg/comment.svg';
 import Comment from './Comment';
 

@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { ReactComponent as PlusSvg } from '../../../assets/svg/plus.svg';
 import { ReactComponent as MinusSvg } from '../../../assets/svg/minus.svg';
-import { type Question } from 'src/types/common';
+import { type Question } from '@/types/common';
 import React, { useState } from 'react';
 import NonAnsweredDay1QCard from './NonAnswered/NonAnsweredDay1QCard';
 import NonAnsweredAfterDay1QCard from './NonAnswered/NonAnsweredAfterDay1QCard';

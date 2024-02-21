@@ -14,9 +14,10 @@ import { ReactComponent as ArrowForwardSvg } from '../../assets/svg/arrowForward
 import { ReactComponent as LogOutSvg } from '../../assets/svg/logOut.svg';
 import { set } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { MypageResponse } from 'src/types/response';
 import { useSetting } from '../../apis/mypage/getSetting';
 import { useChangeTrain } from '../../apis/mypage/changeTrain';
+import { useLogout } from '@/apis/auth/auth';
+
 export default function Mypage() {
   const [isPush, setIsPush] = useState(true);
   const navigate = useNavigate();
@@ -53,6 +54,11 @@ export default function Mypage() {
         },
       },
     );
+  };
+  const { mutate: logout } = useLogout();
+  const logoutHandler = () => {
+    logout();
+    navigate('/login');
   };
   return (
     <Flex
@@ -147,9 +153,7 @@ export default function Mypage() {
         gap="10px"
         cursor="pointer"
         flexGrow={1}
-        onClick={() => {
-          navigate('/login');
-        }}
+        onClick={logoutHandler}
       >
         <LogOutSvg style={{ color: '#718096', alignSelf: 'flex-end' }} />
         <Text fontSize="14px" color="gray.500" alignSelf="flex-end">

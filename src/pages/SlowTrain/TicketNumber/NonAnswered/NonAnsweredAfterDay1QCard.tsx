@@ -8,7 +8,7 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import React from 'react';
-import { type Question, AfterDay1Question } from 'src/types/common';
+import { type Question, AfterDay1Question } from '@/types/common';
 interface AfterDay1QuestionCardProps {
   question: Question;
 }
