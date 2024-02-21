@@ -14,6 +14,7 @@ import HomeNav from '../../components/HomeNav';
 import GuideModal from '../../components/GuideModal';
 import { useNavigate } from 'react-router-dom';
 import ImgChangeModal from './ImgChangeModal';
+import { useMatchingPage } from '@/apis/matching/getMatchingPage';
 
 export default function Matching() {
   const img1Ref = useRef<HTMLInputElement>(null);
@@ -68,6 +69,8 @@ export default function Matching() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const { data } = useMatchingPage();
   return (
     <Flex
       pos="relative"
@@ -114,7 +117,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage="url('/img/comment.png')"
+          backgroundImage={`"url(${data?.photo1})"`}
           backgroundSize="cover"
           onClick={onToggleImg1}
           cursor="pointer"
@@ -125,7 +128,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage="url('/img/choose.png')"
+          backgroundImage={`"url(${data?.photo2})"`}
           backgroundSize="cover"
           onClick={onToggleImg2}
           cursor="pointer"
@@ -136,7 +139,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage="url('/img/train.png')"
+          backgroundImage={`"url(${data?.photo3})"`}
           backgroundSize="cover"
           onClick={onToggleImg3}
           cursor="pointer"
@@ -152,7 +155,7 @@ export default function Matching() {
         {hour}시간 {minute}분 {second}초 후에 매칭이 시작됩니다.
       </Text>
       <Text fontSize="24px" as="b" color="gray.800">
-        남은 티켓 갯수: 3개
+        남은 티켓 갯수: {data?.numberOfTickets}개
       </Text>
       <Flex gap="40px" align="center" flexWrap="wrap" justify="center">
         <Img src="/img/Ticket.png" w="133px" h="100px" borderRadius="10px" />
@@ -164,7 +167,7 @@ export default function Matching() {
             onChange={() => setUsingTicket((prev) => !prev)}
           />
           <Text fontSize="14px" as="b">
-            {usingTicket ? '티켓 사용' : '티켓 미사용'}
+            {data?.ticketUse ? '티켓 사용' : '티켓 미사용'}
           </Text>
         </Flex>
       </Flex>

@@ -17,3 +17,11 @@ export interface ChangeTrainResponse {
 export interface MyKakaotalkIdResponse {
   kakaotalkId: string;
 }
+
+export interface MatchingPageResponse {
+  photo1: string;
+  photo2: string;
+  photo3: string;
+  numberOfTickets: number;
+  ticketUse: boolean;
+}
