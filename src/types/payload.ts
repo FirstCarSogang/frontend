@@ -62,7 +62,9 @@ export interface ChangeUseTicketPayload {
 
 // ------------------------------
 
-//티켓 소거는 아무것도 필요없음
+export interface SlowTrainTicketDeletePayload {
+  ticketNumber: number;
+}
 
 export interface SlowTrainReportPayload {
   user: string;
@@ -106,4 +108,3 @@ export interface FastTriainChoosePayload {
   ticketNumber: number;
   choose: boolean;
 }
-
