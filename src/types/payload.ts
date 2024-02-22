@@ -103,7 +103,7 @@ export interface FastTrainReportPayload {
   report: string;
 }
 
-export interface FastTriainChoosePayload {
+export interface FastTrainChoosePayload {
   user: string;
   ticketNumber: number;
   choose: boolean;
