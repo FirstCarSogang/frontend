@@ -12,12 +12,16 @@ import {
   TabList,
   Tab,
   Tabs,
+  InputRightElement,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { set } from 'react-hook-form';
 import { type Question, Day1Question } from '@/types/common';
 import { ReactComponent as CommentSvg } from '../../../../assets/svg/comment.svg';
 import Comment from './Comment';
+import { usePostComment } from '@/apis/slowtrain/postComment';
+import { useParams } from 'react-router-dom';
 
 const DUMMYLOGINUSER = '송은수';
 
@@ -35,6 +39,26 @@ export default function AnsweredDay1QCard({
   const [showingQuestion, setShowingQuestion] =
     useState<Day1Question>(opponentDay1Question);
   const { isOpen, onToggle } = useDisclosure();
+  const params = useParams().ticketnumber;
+  const toast = useToast();
+  const [comment, setComment] = useState('');
+  const { mutate: commentSubmit, isPending } = usePostComment();
+  const commentSubmitHandler = () => {
+    if (comment === '') {
+      toast({
+        title: '댓글을 입력해주세요.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    commentSubmit({
+      comment: comment,
+      ticketNumber: parseInt(params || '0'),
+      user: localStorage.getItem('user') || '',
+    });
+  };
   return (
     <CardFooter p="10px 30px" flex="display" flexDir="column" gap="10px">
       <Tabs variant="soft-rounded" colorScheme="green" size="sm">
@@ -91,12 +115,18 @@ export default function AnsweredDay1QCard({
           />
         ))}
 
-        <InputGroup size="sm" w="100%">
+        <InputGroup size="md" w="100%">
           <Input
             placeholder="댓글을 입력하세요..."
             focusBorderColor="blackAlpha.100"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
           />
-          <InputRightAddon>전송</InputRightAddon>
+          <InputRightElement>
+            <Button size="sm" onClick={commentSubmitHandler} mr="20px">
+              전송
+            </Button>
+          </InputRightElement>
         </InputGroup>
       </Collapse>
     </CardFooter>

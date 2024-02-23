@@ -15,11 +15,15 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  InputRightElement,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { type Question, AfterDay1Question } from '@/types/common';
 import { ReactComponent as CommentSvg } from '../../../../assets/svg/comment.svg';
 import Comment from './Comment';
+import { usePostComment } from '@/apis/slowtrain/postComment';
+import { useParams } from 'react-router-dom';
 
 const DUMMYLOGINUSER = '송은수';
 
@@ -34,12 +38,33 @@ export default function AnsweredAfterDay1QCard({
 }: AnsweredDay1QCardProps) {
   const day1Question = question as AfterDay1Question;
   const opponentDay1Question = opponentQuestion as AfterDay1Question;
+  const params = useParams().ticketnumber;
   const [showingQuestion, setShowingQuestion] =
     useState<AfterDay1Question>(opponentDay1Question);
   const { isOpen: isComment1Open, onToggle: onToggleComment1 } =
     useDisclosure();
   const { isOpen: isComment2Open, onToggle: onToggleComment2 } =
     useDisclosure();
+  const toast = useToast();
+  const [comment, setComment] = useState('');
+  const { mutate: commentSubmit, isPending } = usePostComment();
+  const commentSubmitHandler = () => {
+    if (comment === '') {
+      toast({
+        title: '댓글을 입력해주세요.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    commentSubmit({
+      comment: comment,
+      ticketNumber: parseInt(params || '0'),
+      user: localStorage.getItem('user') || '',
+    });
+  };
+
   return (
     <CardFooter p="10px 30px" flex="display" flexDir="column" gap="10px">
       <Tabs variant="soft-rounded" colorScheme="green" size="sm">
@@ -157,8 +182,16 @@ export default function AnsweredAfterDay1QCard({
           <Input
             placeholder="댓글을 입력하세요..."
             focusBorderColor="blackAlpha.100"
+            value={comment}
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
           />
-          <InputRightAddon>전송</InputRightAddon>
+          <InputRightElement>
+            <Button size="sm" onClick={commentSubmitHandler} mr="20px">
+              전송
+            </Button>
+          </InputRightElement>
         </InputGroup>
       </Collapse>
     </CardFooter>

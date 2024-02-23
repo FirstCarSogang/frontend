@@ -29,6 +29,7 @@ export interface MatchingPageResponse {
 }
 
 // ------------------
+// response 관련 api 로직 미구현
 
 export interface SlowTrainResponse {
   tickets: Ticket[];
