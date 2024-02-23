@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -8,19 +8,42 @@ import {
   ModalBody,
   Button,
   Textarea,
+  useToast,
 } from '@chakra-ui/react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useReportSlowTicket } from '@/apis/slowtrain/reportSlowTicket';
+import { useReportFastTicket } from '@/apis/fasttrain/reportFastTicket';
 
 interface TrainReportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSummit: () => void;
+  ticketNumber: number;
 }
 
 export default function TrainReportModal({
   isOpen,
   onClose,
-  onSummit,
 }: TrainReportModalProps) {
+  const [reportReason, setReportReason] = useState('');
+  const location = useLocation().pathname;
+  const { mutate: report, isPending } =
+    location === '/fasttrain' ? useReportFastTicket() : useReportSlowTicket();
+  const toast = useToast();
+
+  const submitHandler = () => {
+    if (!reportReason)
+      return toast({
+        title: '신고사유를 입력해주세요.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    report({
+      ticketNumber: 1,
+      report: reportReason,
+      user: localStorage.getItem('user') || '',
+    });
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
@@ -33,13 +56,19 @@ export default function TrainReportModal({
             w="100%"
             bg="gray.200"
             focusBorderColor="green.200"
+            value={reportReason}
+            onChange={(e) => setReportReason(e.target.value)}
           />
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="gray" mr={3} onClick={onClose}>
             취소
           </Button>
-          <Button colorScheme="green" onClick={onSummit}>
+          <Button
+            colorScheme="green"
+            onClick={submitHandler}
+            isLoading={isPending}
+          >
             제출하기
           </Button>
         </ModalFooter>

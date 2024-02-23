@@ -50,7 +50,7 @@ export default function TicketNumber() {
       <TrainReportModal
         isOpen={isOpen}
         onClose={onClose}
-        onSummit={reportSubmitHandler}
+        ticketNumber={parseInt(ticketNumber || '0')}
       />
       <Flex
         pos="fixed"

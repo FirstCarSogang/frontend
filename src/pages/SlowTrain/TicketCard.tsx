@@ -1,3 +1,4 @@
+import { useReportSlowTicket } from '@/apis/slowtrain/reportSlowTicket';
 import {
   Box,
   Center,
@@ -53,7 +54,13 @@ export default function TicketCard({
     onClose: onCloseReport,
     onToggle: onToggleReport,
   } = useDisclosure();
+  const { mutate: report, isPending } = useReportSlowTicket();
   const reportSubmitHandler = () => {
+    report({
+      ticketNumber: ticketNumber,
+      report: '신고사유',
+      user: localStorage.getItem('user') || '',
+    });
     onCloseReport();
     toast({
       title: '신고가 접수되었습니다.',
@@ -81,7 +88,7 @@ export default function TicketCard({
       <TrainReportModal
         isOpen={isReportOpen}
         onClose={onCloseReport}
-        onSummit={reportSubmitHandler}
+        ticketNumber={ticketNumber}
       />
       <Box
         display="flex"
