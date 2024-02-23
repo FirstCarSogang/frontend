@@ -6,6 +6,6 @@ const postChooseSlow = async (payload: SlowtrainChoosePayload) => {
   return instance.post('/slowtrain/choose', payload);
 };
 
-export const usePostChoose = () => {
+export const usePostChooseSlow = () => {
   return useMutation({ mutationFn: postChooseSlow });
 };

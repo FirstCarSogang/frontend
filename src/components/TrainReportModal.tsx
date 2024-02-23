@@ -18,16 +18,19 @@ interface TrainReportModalProps {
   isOpen: boolean;
   onClose: () => void;
   ticketNumber: number;
+  onSubmit: () => void;
 }
 
 export default function TrainReportModal({
   isOpen,
   onClose,
+  onSubmit,
+  ticketNumber,
 }: TrainReportModalProps) {
   const [reportReason, setReportReason] = useState('');
   const location = useLocation().pathname;
   const { mutate: report, isPending } =
-    location === '/fasttrain' ? useReportFastTicket() : useReportSlowTicket();
+    location === '/slowtrain' ? useReportSlowTicket() : useReportFastTicket();
   const toast = useToast();
 
   const submitHandler = () => {
@@ -39,10 +42,11 @@ export default function TrainReportModal({
         isClosable: true,
       });
     report({
-      ticketNumber: 1,
+      ticketNumber: ticketNumber,
       report: reportReason,
       user: localStorage.getItem('user') || '',
     });
+    onSubmit();
   };
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>

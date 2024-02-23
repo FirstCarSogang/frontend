@@ -56,18 +56,24 @@ export default function TicketCard({
   } = useDisclosure();
   const { mutate: report, isPending } = useReportSlowTicket();
   const reportSubmitHandler = () => {
-    report({
-      ticketNumber: ticketNumber,
-      report: '신고사유',
-      user: localStorage.getItem('user') || '',
-    });
-    onCloseReport();
-    toast({
-      title: '신고가 접수되었습니다.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    });
+    report(
+      {
+        ticketNumber: ticketNumber,
+        report: '신고사유',
+        user: localStorage.getItem('user') || '',
+      },
+      {
+        onSuccess: () => {
+          onCloseReport();
+          toast({
+            title: '신고가 접수되었습니다.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      },
+    );
   };
   return (
     <Box
@@ -89,6 +95,7 @@ export default function TicketCard({
         isOpen={isReportOpen}
         onClose={onCloseReport}
         ticketNumber={ticketNumber}
+        onSubmit={reportSubmitHandler}
       />
       <Box
         display="flex"

@@ -2,6 +2,7 @@ import {
   Box,
   CloseButton,
   Flex,
+  Spinner,
   Text,
   useDisclosure,
   useToast,
@@ -11,6 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { type Ticket, Question } from '@/types/common';
 import ChooseModal from './ChooseModal';
 import DayCard from './DayCard';
+import { usePostChooseSlow } from '@/apis/slowtrain/postChooseSlow';
 
 //상대방의 응답
 const DUMMYopponentsQuestion: Question[] = [
@@ -423,7 +425,6 @@ const DUMMYTICKETS: Ticket[] = [
   {
     ticketNumber: 3,
     progressingDay: 4,
-    choose: true,
     DayQuestion: [
       {
         question: '자기소개',
@@ -559,24 +560,53 @@ export default function TicketNumber() {
   const navigate = useNavigate();
   const { isOpen, onToggle, onClose } = useDisclosure();
   const toast = useToast();
+  const { mutate: choose, isPending } = usePostChooseSlow();
+  // if (isPending) {
+  //   return (
+  //     <Flex pos="relative" w="100%" h="100%" align="center" justify="center">
+  //       <Spinner />
+  //     </Flex>
+  //   );
+  // }
   const acceptHandler = () => {
-    onToggle();
+    choose(
+      {
+        choose: true,
+        ticketNumber: DUMMYTICKET.ticketNumber,
+        user: localStorage.getItem('user') || '',
+      },
+      {
+        onSuccess: () => {
+          onToggle();
+        },
+      },
+    );
   };
   const rejectHandler = () => {
-    navigate('/slowtrain');
-    toast({
-      title: '거절을 선택하셨습니디. 티켓이 소멸됩니다.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    });
+    choose(
+      {
+        choose: false,
+        ticketNumber: DUMMYTICKET.ticketNumber,
+        user: localStorage.getItem('user') || '',
+      },
+      {
+        onSuccess: () => {
+          navigate('/slowtrain');
+          toast({
+            title: '거절을 선택하셨습니디. 티켓이 소멸됩니다.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      },
+    );
   };
   useEffect(() => {
-    if (DUMMYTICKET.progressingDay === 4) {
+    if (DUMMYTICKET.progressingDay === 4 && !DUMMYTICKET.choose) {
       onToggle();
     }
   }, []);
-  console.log(DUMMYOPPOTICKET.choose, DUMMYTICKET.choose);
   return (
     <Flex
       w="100%"

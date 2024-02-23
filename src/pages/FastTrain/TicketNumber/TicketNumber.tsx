@@ -1,8 +1,11 @@
+import { usePostChooseFast } from '@/apis/fasttrain/postChooseFast';
+import { useReportFastTicket } from '@/apis/fasttrain/reportFastTicket';
 import {
   Box,
   Button,
   CloseButton,
   Flex,
+  Spinner,
   Text,
   useDisclosure,
   useToast,
@@ -26,17 +29,46 @@ export default function TicketNumber() {
       isClosable: true,
     });
   };
+  const { mutate: report, isPending } = usePostChooseFast();
+  if (isPending)
+    return (
+      <Flex w="100%" h="100%" justify="center" align="center" pos="relative">
+        <Spinner />
+      </Flex>
+    );
   const acceptHandler = () => {
-    navigate('./accepted');
+    report(
+      {
+        choose: true,
+        ticketNumber: parseInt(ticketNumber || '0'),
+        user: localStorage.getItem('user') || '',
+      },
+      {
+        onSuccess: () => {
+          navigate('./accepted');
+        },
+      },
+    );
   };
   const rejectHandler = () => {
-    navigate('/fasttrain');
-    toast({
-      title: '거절을 선택하셨습니디. 티켓이 소멸됩니다.',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    });
+    report(
+      {
+        choose: false,
+        ticketNumber: parseInt(ticketNumber || '0'),
+        user: localStorage.getItem('user') || '',
+      },
+      {
+        onSuccess: () => {
+          navigate('/fasttrain');
+          toast({
+            title: '거절을 선택하셨습니디. 티켓이 소멸됩니다.',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          });
+        },
+      },
+    );
   };
   return (
     <Flex
@@ -51,6 +83,7 @@ export default function TicketNumber() {
         isOpen={isOpen}
         onClose={onClose}
         ticketNumber={parseInt(ticketNumber || '0')}
+        onSubmit={reportSubmitHandler}
       />
       <Flex
         pos="fixed"
