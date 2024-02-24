@@ -85,7 +85,7 @@ export default function Matching() {
 
   const { mutate } = useChangeUseTicket();
   const changeUseTicketHandler = () => {
-    mutate({ useTicket: data?.useTicket || false });
+    mutate({ useTicket: data?.use_ticket || false });
   };
   return (
     <Flex
@@ -133,7 +133,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo1})"`}
+          backgroundImage={`"url(${data?.photo1_url})"`}
           backgroundSize="cover"
           onClick={onToggleImg1}
           cursor="pointer"
@@ -144,7 +144,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo2})"`}
+          backgroundImage={`"url(${data?.photo2_url})"`}
           backgroundSize="cover"
           onClick={onToggleImg2}
           cursor="pointer"
@@ -155,7 +155,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo3})"`}
+          backgroundImage={`"url(${data?.photo3_url})"`}
           backgroundSize="cover"
           onClick={onToggleImg3}
           cursor="pointer"
@@ -192,7 +192,7 @@ export default function Matching() {
         {hour}시간 {minute}분 {second}초 후에 매칭이 시작됩니다.
       </Text>
       <Text fontSize="24px" as="b" color="gray.800">
-        남은 티켓 갯수: {data?.numberOfTickets}개
+        남은 티켓 갯수: {data?.ticket_count}개
       </Text>
       <Flex gap="40px" align="center" flexWrap="wrap" justify="center">
         <Img src="/img/Ticket.png" w="133px" h="100px" borderRadius="10px" />
@@ -200,11 +200,11 @@ export default function Matching() {
           <Switch
             size="lg"
             colorScheme="green"
-            isChecked={data?.useTicket}
+            isChecked={data?.use_ticket}
             onChange={changeUseTicketHandler}
           />
           <Text fontSize="14px" as="b">
-            {data?.useTicket ? '티켓 사용' : '티켓 미사용'}
+            {data?.use_ticket ? '티켓 사용' : '티켓 미사용'}
           </Text>
         </Flex>
       </Flex>

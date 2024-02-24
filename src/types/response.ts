@@ -21,11 +21,11 @@ export interface MyKakaotalkIdResponse {
 }
 
 export interface MatchingPageResponse {
-  photo1: string;
-  photo2: string;
-  photo3: string;
-  numberOfTickets: number;
-  useTicket: boolean;
+  photo1_url: string;
+  photo2_url: string;
+  photo3_url: string;
+  ticket_count: number;
+  use_ticket: boolean;
 }
 
 // ------------------
