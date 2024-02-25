@@ -46,7 +46,7 @@ export default function Mypage() {
   const trainChangeHandler = () => {
     changeTrain(
       {
-        train: data?.train || 'slow',
+        train: data?.train === 'fast' ? 'slow' : 'fast',
       },
       {
         onError: (error) => {

@@ -85,7 +85,7 @@ export default function Matching() {
 
   const { mutate } = useChangeUseTicket();
   const changeUseTicketHandler = () => {
-    mutate({ useTicket: data?.use_ticket || false });
+    mutate({ useTicket: !data?.use_ticket || false });
   };
   return (
     <Flex
