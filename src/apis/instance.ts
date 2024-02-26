@@ -3,11 +3,12 @@ import axios from 'axios';
 const REFRESH_URL = '/refresh';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:8000',
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 instance.interceptors.request.use(
@@ -50,7 +51,7 @@ const getRefreshToken = async (): Promise<string | void> => {
 };
 
 instance.interceptors.response.use(
-  (res) => res,
+  (res) => res.data,
   async (err) => {
     const {
       config,
@@ -73,9 +74,17 @@ instance.interceptors.response.use(
 );
 
 export const noAuthInstance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:8000',
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
+
+noAuthInstance.interceptors.response.use(
+  (res) => res.data,
+  (err) => {
+    return Promise.reject(err);
+  },
+);
