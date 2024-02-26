@@ -17,6 +17,7 @@ import ImgChangeModal from './ImgChangeModal';
 import { useMatchingPage } from '@/apis/matching/getMatchingPage';
 import { useChangePhoto } from '@/apis/matching/changePhoto';
 import { useChangeUseTicket } from '@/apis/matching/changeUseTicket';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Matching() {
   const img1Ref = useRef<HTMLInputElement>(null);
@@ -59,16 +60,19 @@ export default function Matching() {
   const img1ChangeHandler = () => {
     if (img1Ref.current) {
       img1Ref.current.click();
+      onToggleImg1();
     }
   };
   const img2ChangeHandler = () => {
     if (img2Ref.current) {
       img2Ref.current.click();
+      onToggleImg2();
     }
   };
   const img3ChangeHandler = () => {
     if (img3Ref.current) {
       img3Ref.current.click();
+      onToggleImg3();
     }
   };
   useEffect(() => {
@@ -133,7 +137,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo1_url})"`}
+          backgroundImage={`"url("${data?.photo1_url}")"`}
           backgroundSize="cover"
           onClick={onToggleImg1}
           cursor="pointer"
@@ -144,7 +148,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo2_url})"`}
+          backgroundImage={`"url("${data?.photo2_url}")"`}
           backgroundSize="cover"
           onClick={onToggleImg2}
           cursor="pointer"
@@ -155,7 +159,7 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url(${data?.photo3_url})"`}
+          backgroundImage={`"url("${data?.photo3_url}")"`}
           backgroundSize="cover"
           onClick={onToggleImg3}
           cursor="pointer"
