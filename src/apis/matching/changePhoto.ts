@@ -1,5 +1,5 @@
 import { ChangePhotoPayload } from '@/types/payload';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { instance } from '../instance';
 
 const changePhoto = async (payload: ChangePhotoPayload) => {
@@ -7,5 +7,10 @@ const changePhoto = async (payload: ChangePhotoPayload) => {
 };
 
 export const useChangePhoto = () => {
-  return useMutation({ mutationFn: changePhoto });
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: changePhoto,
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['matchingPage'] }),
+  });
 };
