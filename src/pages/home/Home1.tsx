@@ -10,7 +10,7 @@ export default function Home1() {
       h="100%"
       pos="relative"
       flexDir="column"
-      backgroundImage="url('/img/train.jpg')"
+      backgroundImage="url('https://github.com/FirstCarSogang/frontend/blob/main/public/img/Train.JPG?raw=true')"
       backgroundSize="cover"
       backgroundPosition="center"
       justify="space-around"
