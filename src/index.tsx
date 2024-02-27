@@ -18,6 +18,7 @@ const theme = extendTheme({
         padding: 0,
         fontFamily: 'Pretendard',
         boxSizing: 'border-box',
+        wordBreak: 'keep-all',
       },
       button: {
         flexShrink: 0,
