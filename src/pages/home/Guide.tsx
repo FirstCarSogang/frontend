@@ -14,6 +14,7 @@ import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
 import GuideCard from './GuideCard';
 import GuideModal from '../../components/GuideModal';
 import { useNavigate } from 'react-router-dom';
+import FindFrind from '@/assets/img/FindFriend.png';
 
 export default function Guide() {
   const progressRef = useRef<HTMLDivElement | null>(null);
@@ -44,7 +45,7 @@ export default function Guide() {
       p="80px 10px 0 10px"
       w="100%"
       h="100%"
-      backgroundImage={`url("/img/TrainOpa40.PNG")`}
+      backgroundImage={`url("https://github.com/FirstCarSogang/frontend/blob/main/public/img/TrainOpa40.png?raw=true")`}
       backgroundSize="cover"
       backgroundPosition="center"
       overflowY="scroll"
@@ -93,7 +94,7 @@ export default function Guide() {
               사진 3장을 올려주시면 비슷한 취미를 가진 친구를 찾아드려요
             </Text>
             <Img
-              src="/img/FindFriend.png"
+              src={FindFrind}
               w="100%"
               h="fit-content"
               borderRadius="8px"
