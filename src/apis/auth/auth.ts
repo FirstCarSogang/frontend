@@ -64,7 +64,7 @@ export const useLogout = () => {
   const options = {
     mutationFn: logout,
     onSuccess: () => {
-      localStorage.removeItem('user');
+      localStorage.removeItem('studentId');
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
     },

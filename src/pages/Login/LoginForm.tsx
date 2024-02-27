@@ -38,7 +38,7 @@ export default function LoginForm() {
       onSuccess: (data) => {
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
-        localStorage.setItem('user', data.user);
+        localStorage.setItem('studentId', data.studentId);
         navigate('/matching');
       },
       onError: (error) => {

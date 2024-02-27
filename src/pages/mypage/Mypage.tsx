@@ -22,27 +22,28 @@ export default function Mypage() {
   const [isPush, setIsPush] = useState(true);
   const navigate = useNavigate();
   const toast = useToast();
-  const user = localStorage.getItem('user');
-  // useEffect(() => {
-  //   if (!user) {
-  //     toast({
-  //       title: '로그인 후 이용해주세요.',
-  //       status: 'error',
-  //       duration: 3000,
-  //       isClosable: true,
-  //     });
-  //     navigate('/login');
-  //   }
-  // });
+  const studentId = localStorage.getItem('studentId');
+  useEffect(() => {
+    if (!studentId) {
+      toast({
+        title: '로그인 후 이용해주세요.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate('/login');
+    }
+  }, []);
   const { data, isPending } = useSetting();
-  // if (isPending)
-  //   return (
-  //     <Flex pos="relative" w="100%" h="100%" justify="center" align="center">
-  //       <Spinner />
-  //     </Flex>
-  //   );
-
   const { mutate: changeTrain } = useChangeTrain();
+  const { mutate: logout } = useLogout();
+  if (isPending)
+    return (
+      <Flex pos="relative" w="100%" h="100%" justify="center" align="center">
+        <Spinner />
+      </Flex>
+    );
+
   const trainChangeHandler = () => {
     changeTrain(
       {
@@ -55,7 +56,6 @@ export default function Mypage() {
       },
     );
   };
-  const { mutate: logout } = useLogout();
   const logoutHandler = () => {
     logout();
     navigate('/login');

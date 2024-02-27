@@ -1,7 +1,7 @@
 import { FastTicket, Ticket } from './common';
 
 export interface LoginResponse {
-  user: string;
+  studentId: string;
   accessToken: string;
   refreshToken: string;
 }
