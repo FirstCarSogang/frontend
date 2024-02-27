@@ -14,6 +14,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReactComponent as SirenSvg } from '../../../assets/svg/siren.svg';
 import TrainReportModal from '../../../components/TrainReportModal';
+import Foot from '@/assets/img/Foot.jpg';
 
 export default function TicketNumber() {
   const navigate = useNavigate();
@@ -114,10 +115,10 @@ export default function TicketNumber() {
       </Text>
       <Flex alignSelf="center" flexGrow={1} justify="center" align="center">
         <Box
-          w="111px"
-          h="111px"
+          w="200px"
+          h="200px"
           borderRadius="10px"
-          backgroundImage={`url('/img/comment.png')`}
+          backgroundImage={Foot}
           backgroundSize="cover"
           backgroundPosition="center"
         />

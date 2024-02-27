@@ -25,9 +25,18 @@ export default function SignUp() {
   const method = useForm<SignUpForm>({ mode: 'onBlur' });
   const { mutate: signUp, isPending } = useSignUp();
   const submitHandler: SubmitHandler<SignUpForm> = async (data) => {
-    const submitData = { ...data, train: selectedTrain };
-    delete submitData.password2;
-    signUp(submitData, {
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('studentId', data.studentId);
+    formData.append('kakaotalkId', data.kakaotalkId);
+    formData.append('email', data.email);
+    formData.append('photo1', data.photo1[0]);
+    formData.append('photo2', data.photo2[0]);
+    formData.append('photo3', data.photo3[0]);
+    formData.append('train', selectedTrain);
+    formData.append('password', data.password1);
+    console.log(formData)
+    signUp(formData, {
       onSuccess: (data) => {
         toast({
           title: '회원가입 성공',
@@ -39,7 +48,6 @@ export default function SignUp() {
         navigate('/login');
       },
       onError: (error) => {
-        console.log(submitData);
         console.log(error);
       },
     });

@@ -24,6 +24,11 @@ export default function Comment({ isMe, content }: CommentProps) {
           상대방으로부터
         </Text>
       )}
+      {isMe && (
+        <Text fontSize="12px" as="b" alignSelf="flex-end">
+          나로부터
+        </Text>
+      )}
       <Text
         fontSize="14px"
         color="blackAlpha.500"

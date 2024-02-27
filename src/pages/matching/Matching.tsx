@@ -19,6 +19,9 @@ import { useChangePhoto } from '@/apis/matching/changePhoto';
 import { useChangeUseTicket } from '@/apis/matching/changeUseTicket';
 import { useQueryClient } from '@tanstack/react-query';
 import Ticket from '@/assets/img/Ticket.png';
+import Disney from '@/assets/img/Disney.jpg';
+import Cafe from '@/assets/img/Cafe.jpg';
+import Meat from '@/assets/img/Meat.jpg';
 
 export default function Matching() {
   const img1Ref = useRef<HTMLInputElement>(null);
@@ -144,7 +147,8 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url("${data?.photo1_url}")"`}
+          // backgroundImage={`"url("${data?.photo1_url}")"`}
+          backgroundImage={Disney}
           backgroundSize="cover"
           onClick={onToggleImg1}
           cursor="pointer"
@@ -155,7 +159,8 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url("${data?.photo2_url}")"`}
+          // backgroundImage={`"url("${data?.photo2_url}")"`}
+          backgroundImage={Cafe}
           backgroundSize="cover"
           onClick={onToggleImg2}
           cursor="pointer"
@@ -166,7 +171,8 @@ export default function Matching() {
           h="fit-content"
           borderRadius="10px"
           aspectRatio={1 / 1}
-          backgroundImage={`"url("${data?.photo3_url}")"`}
+          // backgroundImage={`"url("${data?.photo3_url}")"`}
+          backgroundImage={Meat}
           backgroundSize="cover"
           onClick={onToggleImg3}
           cursor="pointer"

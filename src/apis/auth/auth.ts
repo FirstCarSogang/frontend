@@ -45,8 +45,14 @@ export const useSignUpVerifyEmail = () => {
   return useMutation(options);
 };
 
-const signUp = async (payload: SignUpPayload) => {
-  return noAuthInstance.post('/signup/register', payload);
+type SignUpPayloadOrFormData = SignUpPayload | FormData;
+
+const signUp = async (payload: SignUpPayloadOrFormData) => {
+  return noAuthInstance.post('/signup/register', payload, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 };
 
 export const useSignUp = () => {

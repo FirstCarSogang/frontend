@@ -94,6 +94,7 @@ export default function Step1({ onNext }: Step1Props) {
         },
       },
     );
+    setIsValidationCorrect(true);
   };
   const pwCheckHandler = () => {
     if (watch('password1') !== watch('password2')) {

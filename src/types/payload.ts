@@ -33,9 +33,9 @@ export interface SignUpPayload {
   studentId: string;
   kakaotalkId: string;
   email: string;
-  photo1: FileList;
-  photo2: FileList;
-  photo3: FileList;
+  photo1: File;
+  photo2: File;
+  photo3: File;
   train: 'fast' | 'slow';
 }
 

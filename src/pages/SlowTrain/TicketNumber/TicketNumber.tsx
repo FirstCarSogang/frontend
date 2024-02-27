@@ -19,17 +19,18 @@ const DUMMYopponentsQuestion: Question[] = [
   {
     question: '자기소개',
     placeholder: '자기소개를 해주세요',
-    answer: '저는 R관남은 아닌데.. 아무튼 상대방이에요',
+    answer:
+      '사케동을 본 날 부터 푹 빠졌습니다. 사케동은 제 삶에서 가장 행복하게 해주는 음식이자 친구였습니다. 저의 이상형은 일식입니다 ^_^',
     comment: [
       {
         id: 1,
-        content: 'ㅋㅋㅋㅋㅋㅋㅋ 얼탱이 없으시네요',
+        content: 'ㅋㅋㅋㅋㅋㅋㅋ 저도 일식 좋아해요',
         createdAt: '2023-02-01',
         from: '송은수',
       },
       {
         id: 2,
-        content: '? 반말 ㄴㄴ',
+        content: '한번 먹으러 가시죠',
         createdAt: '2023-02-01',
         from: '최환',
       },
