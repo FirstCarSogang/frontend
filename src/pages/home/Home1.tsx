@@ -2,7 +2,7 @@ import { Button, Flex, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import HomeNav from '../../components/HomeNav';
 import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
-import Train from '@/assets/img/Train.jpg';
+import Train from '@/assets/img/TrainBg.jpg';
 
 export default function Home1() {
   return (
