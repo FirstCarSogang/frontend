@@ -80,7 +80,8 @@ export default function Home22() {
         w="100%"
         pos="fixed"
         maxW="540px"
-        top="90%"
+        bottom={70}
+        transform="translateY(+50%)"
         justify="space-between"
         p="0 10px"
         zIndex={10}

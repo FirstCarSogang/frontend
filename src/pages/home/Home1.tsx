@@ -10,7 +10,7 @@ export default function Home1() {
       h="100%"
       pos="relative"
       flexDir="column"
-      backgroundImage="url('/img/Train.JPG')"
+      backgroundImage="url('/img/train.jpg')"
       backgroundSize="cover"
       backgroundPosition="center"
       justify="space-around"
