@@ -1,6 +1,7 @@
 import { Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import TrainBg from '@/assets/img/TrainOpa40.png';
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function NotFound() {
       justify="center"
       align="center"
       p="20px"
-      backgroundImage="img/TrainOpa40.png"
+      backgroundImage={TrainBg}
       backgroundSize="cover"
       backgroundPosition="center"
       gap="40px"

@@ -2,6 +2,7 @@ import { Button, Flex, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import HomeNav from '../../components/HomeNav';
 import { ReactComponent as TrainSvg } from '../../assets/svg/train.svg';
+import Train from '@/assets/img/Train.jpg';
 
 export default function Home1() {
   return (
@@ -10,7 +11,7 @@ export default function Home1() {
       h="100%"
       pos="relative"
       flexDir="column"
-      backgroundImage="url('https://github.com/FirstCarSogang/frontend/blob/main/public/img/Train.JPG?raw=true')"
+      backgroundImage={Train}
       backgroundSize="cover"
       backgroundPosition="center"
       justify="space-around"

@@ -15,6 +15,12 @@ import GuideCard from './GuideCard';
 import GuideModal from '../../components/GuideModal';
 import { useNavigate } from 'react-router-dom';
 import FindFrind from '@/assets/img/FindFriend.png';
+import Comment from '@/assets/img/Comment.png';
+import Choose from '@/assets/img/Choose.png';
+import Introduce from '@/assets/img/Introduce.png';
+import Ticket from '@/assets/img/Ticket.png';
+import Train from '@/assets/img/Train.png';
+import TrainBg from '@/assets/img/TrainOpa40.png';
 
 export default function Guide() {
   const progressRef = useRef<HTMLDivElement | null>(null);
@@ -45,7 +51,7 @@ export default function Guide() {
       p="80px 10px 0 10px"
       w="100%"
       h="100%"
-      backgroundImage={`url("https://github.com/FirstCarSogang/frontend/blob/main/public/img/TrainOpa40.png?raw=true")`}
+      backgroundImage={TrainBg}
       backgroundSize="cover"
       backgroundPosition="center"
       overflowY="scroll"
@@ -93,12 +99,7 @@ export default function Guide() {
             <Text fontSize="14px" color="gray.400">
               사진 3장을 올려주시면 비슷한 취미를 가진 친구를 찾아드려요
             </Text>
-            <Img
-              src={FindFrind}
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={FindFrind} w="100%" h="fit-content" borderRadius="8px" />
           </GuideCard>
           <GuideCard color={theme.colors.green[500]}>
             <Text fontSize="18px" as="b">
@@ -107,12 +108,7 @@ export default function Guide() {
             <Text fontSize="14px" color="gray.400">
               댓글을 작성하며 궁금한 것들을 이야기 해보아요!
             </Text>
-            <Img
-              src="/img/Comment.png"
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={Comment} w="100%" h="fit-content" borderRadius="8px" />
           </GuideCard>
           <GuideCard color={theme.colors.green[100]}>
             <Text fontSize="18px" as="b">
@@ -126,12 +122,7 @@ export default function Guide() {
             </Text>
           </GuideCard>
           <GuideCard color={theme.colors.green[800]}>
-            <Img
-              src="/img/Ticket.png"
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={Ticket} w="100%" h="fit-content" borderRadius="8px" />
             <Text fontSize="18px" as="b">
               열차는 어떻게 탈 수 있나요?
             </Text>
@@ -150,12 +141,7 @@ export default function Guide() {
               상대가 마음에 들지 않아도 속상해 하지 마세요! 다음 티켓을 통해
               나랑 더 비슷한 학우를 만날 수 있어요
             </Text>
-            <Img
-              src="/img/Choose.png"
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={Choose} w="100%" h="fit-content" borderRadius="8px" />
           </GuideCard>
         </Flex>
         <Flex w="100%" flexDir="column" gap="10px">
@@ -191,12 +177,7 @@ export default function Guide() {
             <Text fontSize="12px" color="gray.400" alignSelf="flex-end">
               급행열차는 해당X
             </Text>
-            <Img
-              src="/img/Introduce.png"
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={Introduce} w="100%" h="fit-content" borderRadius="8px" />
           </GuideCard>
           <GuideCard color={theme.colors.green[300]}>
             <Text fontSize="18px" as="b">
@@ -221,12 +202,7 @@ export default function Guide() {
             <Text fontSize="12px" color="gray.400" alignSelf="flex-end">
               마이페이지에서 확인 및 변경 가능
             </Text>
-            <Img
-              src="/img/Train.png"
-              w="100%"
-              h="fit-content"
-              borderRadius="8px"
-            />
+            <Img src={Train} w="100%" h="fit-content" borderRadius="8px" />
           </GuideCard>
           <GuideCard color={theme.colors.green[500]}>
             <Text fontSize="18px" as="b">
