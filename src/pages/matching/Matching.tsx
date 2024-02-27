@@ -18,6 +18,7 @@ import { useMatchingPage } from '@/apis/matching/getMatchingPage';
 import { useChangePhoto } from '@/apis/matching/changePhoto';
 import { useChangeUseTicket } from '@/apis/matching/changeUseTicket';
 import { useQueryClient } from '@tanstack/react-query';
+import Ticket from '@/assets/img/Ticket.png';
 
 export default function Matching() {
   const img1Ref = useRef<HTMLInputElement>(null);
@@ -205,7 +206,7 @@ export default function Matching() {
         남은 티켓 갯수: {data?.ticket_count}개
       </Text>
       <Flex gap="40px" align="center" flexWrap="wrap" justify="center">
-        <Img src="/img/Ticket.png" w="133px" h="100px" borderRadius="10px" />
+        <Img src={Ticket} w="133px" h="100px" borderRadius="10px" />
         <Flex gap="10px">
           <Switch
             size="lg"

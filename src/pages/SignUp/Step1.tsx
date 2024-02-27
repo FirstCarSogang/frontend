@@ -73,7 +73,7 @@ export default function Step1({ onNext }: Step1Props) {
     useSignUpVerifyEmail();
   const verfiyEmailHandler = () => {
     verifyEmail(
-      { input_otp: opt },
+      { input_otp: opt, email: watch('email') },
       {
         onSuccess: () => {
           setIsValidationCorrect(true);
@@ -91,7 +91,6 @@ export default function Step1({ onNext }: Step1Props) {
             duration: 3000,
             isClosable: true,
           });
-          setIsValidationCorrect(true); //지우기
         },
       },
     );

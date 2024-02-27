@@ -24,6 +24,7 @@ export interface SignUpSendEmailPayload {
 
 export interface SignUpVerifyEmailPayload {
   input_otp: string;
+  email: string;
 }
 
 export interface SignUpPayload {
