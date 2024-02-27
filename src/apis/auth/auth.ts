@@ -7,7 +7,7 @@ import {
   type SignUpPayload,
 } from '../../types/payload';
 import { type LoginResponse } from '../../types/response';
-import { noAuthInstance } from '../instance';
+import { instance, noAuthInstance } from '../instance';
 
 const login = async (payload: LoginPayload): Promise<LoginResponse> => {
   return noAuthInstance.post('/login', payload);
@@ -57,7 +57,7 @@ export const useSignUp = () => {
 };
 
 const logout = async () => {
-  return axios.delete('/logout');
+  return instance.delete('/logout');
 };
 
 export const useLogout = () => {
