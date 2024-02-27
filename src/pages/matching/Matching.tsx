@@ -85,6 +85,12 @@ export default function Matching() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (localStorage.getItem('studentId') === null) {
+      navigate('/login');
+    }
+  }, []);
+
   const { data } = useMatchingPage();
 
   const { mutate } = useChangeUseTicket();

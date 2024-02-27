@@ -75,7 +75,9 @@ export default function Guide() {
             colorScheme="green"
             size="md"
             rightIcon={<TrainSvg color="white" />}
-            onClick={()=>{navigate('/login')}}
+            onClick={() => {
+              navigate('/login');
+            }}
           >
             시작하기
           </Button>
@@ -91,7 +93,7 @@ export default function Guide() {
               사진 3장을 올려주시면 비슷한 취미를 가진 친구를 찾아드려요
             </Text>
             <Img
-              src="/img/FindFriend.PNG"
+              src="/img/FindFriend.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"
@@ -105,7 +107,7 @@ export default function Guide() {
               댓글을 작성하며 궁금한 것들을 이야기 해보아요!
             </Text>
             <Img
-              src="/img/Comment.PNG"
+              src="/img/Comment.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"
@@ -124,7 +126,7 @@ export default function Guide() {
           </GuideCard>
           <GuideCard color={theme.colors.green[800]}>
             <Img
-              src="/img/Ticket.PNG"
+              src="/img/Ticket.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"
@@ -148,7 +150,7 @@ export default function Guide() {
               나랑 더 비슷한 학우를 만날 수 있어요
             </Text>
             <Img
-              src="/img/Choose.PNG"
+              src="/img/Choose.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"
@@ -189,7 +191,7 @@ export default function Guide() {
               급행열차는 해당X
             </Text>
             <Img
-              src="/img/Introduce.PNG"
+              src="/img/Introduce.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"
@@ -219,7 +221,7 @@ export default function Guide() {
               마이페이지에서 확인 및 변경 가능
             </Text>
             <Img
-              src="/img/Train.PNG"
+              src="/img/Train.png"
               w="100%"
               h="fit-content"
               borderRadius="8px"

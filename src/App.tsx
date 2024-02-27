@@ -18,6 +18,7 @@ import Guide from './pages/home/Guide';
 import FastTrain from './pages/FastTrain/FastTrain';
 import FastTicketNumber from './pages/FastTrain/TicketNumber/TicketNumber';
 import Accpeted from './pages/FastTrain/TicketNumber/Accpeted';
+import NotFound from './pages/NotFound/NotFound';
 
 const App = () => (
   <Layout>
@@ -39,6 +40,7 @@ const App = () => (
       <Route path="/forgetpassword3" element={<ForgetPassword3 />} />
       <Route path="/changepassword" element={<ChangePassword />} />
       <Route path="/changekakaotalkid" element={<ChangeKakaotalkID />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   </Layout>
 );
