@@ -16,12 +16,18 @@ export default function Home1() {
       justify="space-around"
       align="center"
     >
-      <Text fontSize="40px" as="b" fontFamily="WiggleHangeul" mb="40px">
+      <Text
+        fontSize="40px"
+        as="b"
+        fontFamily="WiggleHangeul"
+        mb="40px"
+        color="green.900"
+      >
         첫<br />차<br />서<br />강
       </Text>
       <Flex justify="center" align="center" gap={10}>
         <Link to="/home2">
-          <Button colorScheme="green" size="lg" variant="outline">
+          <Button colorScheme="green" size="lg" variant="solid">
             다음
           </Button>
         </Link>

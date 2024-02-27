@@ -68,6 +68,7 @@ export default function Home22() {
         pos="fixed"
         top={70}
         zIndex={10}
+        minW="250px"
         left="50%"
         transform="translateX(-50%)"
         fontFamily="12롯데마트행복Medium"
@@ -75,6 +76,30 @@ export default function Home22() {
       >
         열차 탑승 안내 수칙
       </Text>
+      <Flex
+        w="100%"
+        pos="fixed"
+        maxW="540px"
+        top="90%"
+        justify="space-between"
+        p="0 10px"
+        zIndex={10}
+      >
+        <Center
+          color="gray.600"
+          cursor="pointer"
+          onClick={leftArrowClickHandler}
+        >
+          <LeftArrowSvg />
+        </Center>
+        <Center
+          color="gray.600"
+          cursor="pointer"
+          onClick={rightArrowClickHandler}
+        >
+          <RightArrowSvg />
+        </Center>
+      </Flex>
       <Flex
         flexDir="column"
         justify="center"
@@ -88,18 +113,7 @@ export default function Home22() {
         padding=" 0 30px"
         pos="relative"
       >
-        <Center
-          pos="absolute"
-          right="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={rightArrowClickHandler}
-        >
-          <RightArrowSvg />
-        </Center>
-        <Text fontSize="20px" as="b">
+        <Text fontSize="20px" as="b" textAlign="center">
           사진 3장을 등록하고 열차를 선택해요
         </Text>
         <Text fontSize="16px" mb="80px" textAlign="center">
@@ -126,29 +140,7 @@ export default function Home22() {
         padding=" 0 30px"
         pos="relative"
       >
-        <Center
-          pos="absolute"
-          left="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={leftArrowClickHandler}
-        >
-          <LeftArrowSvg />
-        </Center>
-        <Center
-          pos="absolute"
-          right="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={rightArrowClickHandler}
-        >
-          <RightArrowSvg />
-        </Center>
-        <Text fontSize="20px" as="b">
+        <Text fontSize="20px" as="b" textAlign="center">
           매일 22시에 매칭이 이루어져요.
         </Text>
         <Text fontSize="16px" mb="80px" textAlign="center">
@@ -168,29 +160,7 @@ export default function Home22() {
         padding=" 0 30px"
         pos="relative"
       >
-        <Center
-          pos="absolute"
-          left="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={leftArrowClickHandler}
-        >
-          <LeftArrowSvg />
-        </Center>
-        <Center
-          pos="absolute"
-          right="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={rightArrowClickHandler}
-        >
-          <RightArrowSvg />
-        </Center>
-        <Text fontSize="20px" as="b">
+        <Text fontSize="20px" as="b" textAlign="center">
           3일 간 자기소개, 질의응답 시간을 가져요
         </Text>
         <Text fontSize="16px" mb="80px" textAlign="center">
@@ -214,19 +184,7 @@ export default function Home22() {
         padding=" 0 30px"
         pos="relative"
       >
-        <Center
-          pos="absolute"
-          left="10px"
-          top="50%"
-          transform="translateY(-50%)"
-          color="gray.600"
-          cursor="pointer"
-          onClick={leftArrowClickHandler}
-        >
-          <LeftArrowSvg />
-        </Center>
-
-        <Text fontSize="20px" as="b">
+        <Text fontSize="20px" as="b" textAlign="center">
           상대방과의 만남을 선택해요
         </Text>
         <Text fontSize="16px" textAlign="center" mb="20px">
